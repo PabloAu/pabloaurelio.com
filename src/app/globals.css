@@ -1,4 +1,11 @@
 :root {
+  --font-body:
+    "IBM Plex Sans", "Aptos", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-display:
+    "Newsreader", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    "URW Palladio L", Georgia, serif;
+  --font-mono:
+    "IBM Plex Mono", "Cascadia Code", "SFMono-Regular", Consolas, monospace;
   --bg: #f3eee4;
   --bg-elevated: rgba(255, 255, 255, 0.66);
   --surface: rgba(255, 255, 255, 0.74);
