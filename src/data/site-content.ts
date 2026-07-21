@@ -3,18 +3,10 @@ export type SectionLink = {
   href: string;
 };
 
-export type FocusArea = {
-  title: string;
+export type DisciplineTrack = {
   eyebrow: string;
-  description: string;
-  href: string;
-};
-
-export type FeaturedItem = {
   title: string;
-  category: string;
-  year: string;
-  blurb: string;
+  description: string;
   href: string;
 };
 
@@ -39,73 +31,77 @@ export type ReadingEntry = {
   href: string;
 };
 
+export type ContactLink = {
+  label: string;
+  value: string;
+  href: string;
+};
+
+export const topLinks: SectionLink[] = [
+  { label: "CV", href: "/documents/pablo-aurelio-resume.pdf" },
+  {
+    label: "Scholar",
+    href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
+  },
+  { label: "GitHub", href: "https://github.com/PabloAu" }
+];
+
 export const navLinks: SectionLink[] = [
   { label: "Research", href: "#research" },
   { label: "Software", href: "#software" },
-  { label: "Apps", href: "#apps" },
-  { label: "Slowball", href: "#slowball" },
   { label: "Writing", href: "#writing" },
-  { label: "Consulting", href: "#consulting" },
-  { label: "Resume", href: "#resume" },
-  { label: "Reading Room", href: "#reading-room" }
+  { label: "Marginalia", href: "#marginalia" },
+  { label: "Contact", href: "#contact" }
 ];
 
-export const focusAreas: FocusArea[] = [
+export const introParagraphs: string[] = [
+  "I work across microscopy and biophysics, scientific software, decision tools, fiction, essays, and long-horizon capital work. This site is meant to hold those branches together without making them feel fragmented.",
+  "The scientific branch gathers publications, image-led thinking, and method-heavy work. The build branch gathers repositories, analytical tooling, product experiments, and the systems around Personal Lab, Capital Lab, and Slowball.",
+  "Alongside that are slower projects: novels, short stories, essays, technical diligence, and a personal reading shelf that will become a compact catalogue of books, articles, and papers worth returning to."
+];
+
+export const disciplineTracks: DisciplineTrack[] = [
   {
-    eyebrow: "Science",
+    eyebrow: "Research",
     title: "Microscopy, biophysics, and quantitative biology",
     description:
-      "A research practice spanning super-resolution microscopy, image analysis, data-heavy biology, and cellular biophysics.",
+      "Publications, imaging methods, and data-heavy biological work organized as a deliberate scientific branch.",
     href: "#research"
   },
   {
     eyebrow: "Software",
-    title: "Tools, pipelines, and analytical systems",
+    title: "Analytical tools, libraries, and experimental systems",
     description:
-      "From imaging libraries to decision-support products, the software work connects experimentation with execution.",
+      "A software branch connecting open-source tooling, internal research workflows, and product-grade analytical systems.",
+    href: "#software"
+  },
+  {
+    eyebrow: "Apps",
+    title: "Personal Lab and Capital Lab",
+    description:
+      "Decision-making environments built around clarity, evidence, judgment, and long-horizon thinking.",
     href: "#software"
   },
   {
     eyebrow: "Writing",
     title: "Novels, essays, short fiction, and scientific communication",
     description:
-      "A parallel literary branch with room for fiction, essays, long-form thinking, and public-facing scientific writing.",
+      "A quieter literary space for La Bacanora, essays, articles, and future publication work.",
     href: "#writing"
-  }
-];
-
-export const featuredItems: FeaturedItem[] = [
-  {
-    category: "Research",
-    year: "2026",
-    title: "Cell-iSCAT",
-    blurb:
-      "A new imaging method focused on intracellular dynamics with high spatiotemporal resolution.",
-    href: "#research"
   },
   {
-    category: "App",
-    year: "In development",
-    title: "Personal Lab",
-    blurb:
-      "A decision-making environment for structuring thought, evidence, and personal systems.",
-    href: "#apps"
+    eyebrow: "Slowball",
+    title: "Long-horizon investing and portfolio tooling",
+    description:
+      "The Slowball project, tracker work, and the financial branch that links product, research, and writing.",
+    href: "#software"
   },
   {
-    category: "App",
-    year: "In development",
-    title: "Capital Lab",
-    blurb:
-      "A product direction for portfolio thinking, capital allocation, and analytical workflows.",
-    href: "#apps"
-  },
-  {
-    category: "Writing",
-    year: "Current",
-    title: "La Bacanora",
-    blurb:
-      "A dedicated literary space for the novel alongside short stories, essays, and future publication paths.",
-    href: "#writing"
+    eyebrow: "Consulting",
+    title: "Technical diligence and analytical support",
+    description:
+      "Scientific, software, and product-oriented diligence work presented with directness and trust.",
+    href: "#contact"
   }
 ];
 
@@ -157,29 +153,30 @@ export const publications: Publication[] = [
 export const softwareProjects: ProjectCard[] = [
   {
     title: "CellRaQ",
-    status: "Public repo",
-    blurb: "Cellular RNA quantification tooling.",
+    status: "Public repository",
+    blurb: "Cellular RNA quantification tooling for experimental workflows.",
     href: "https://github.com/PabloAu/CellRaQ"
   },
   {
     title: "Single-Molecule-Tracking-Analysis",
-    status: "Public repo",
-    blurb: "Analysis workflows for single-molecule tracking experiments.",
+    status: "Public repository",
+    blurb:
+      "Analysis workflows for single-molecule tracking experiments and motion inference.",
     href: "https://github.com/PabloAu/Single-Molecule-Tracking-Analysis"
   },
   {
     title: "Two-Parameter-SMT",
-    status: "Public repo",
+    status: "Public repository",
     blurb:
-      "Chromatin and transcription-factor mobility assessment from single-molecule tracking.",
+      "Single-molecule tracking work focused on chromatin and transcription-factor mobility.",
     href: "https://github.com/PabloAu/Two-Parameter-SMT"
   },
   {
     title: "SlowballTracker",
     status: "Portfolio tool",
     blurb:
-      "A dedicated space for portfolio tracking tools and Slowball-adjacent software.",
-    href: "#slowball"
+      "A dedicated home for portfolio tracking work and Slowball-adjacent analytical software.",
+    href: "#software"
   }
 ];
 
@@ -188,15 +185,15 @@ export const apps: ProjectCard[] = [
     title: "Personal Lab",
     status: "In development",
     blurb:
-      "A system for organizing decisions, knowledge, and lived experiments with clarity.",
-    href: "#apps"
+      "A system for structuring decisions, knowledge, experiments, and personal operating principles.",
+    href: "#software"
   },
   {
     title: "Capital Lab",
     status: "In development",
     blurb:
-      "A structured environment for capital allocation, investment research, and judgment.",
-    href: "#apps"
+      "A product direction for portfolio research, capital allocation, and long-horizon judgment.",
+    href: "#software"
   }
 ];
 
@@ -205,44 +202,71 @@ export const writingProjects: ProjectCard[] = [
     title: "La Bacanora",
     status: "Novel",
     blurb:
-      "A featured literary project with room for publication updates and excerpts later on.",
+      "A featured literary project with room for publication updates, excerpts, and supporting essays.",
     href: "#writing"
   },
   {
     title: "Short Stories",
-    status: "Collection",
+    status: "Fiction",
     blurb:
-      "A quieter branch for fiction work that can grow as pieces are selected and published.",
+      "A branch for shorter narrative work, quieter pieces, and future published selections.",
     href: "#writing"
   },
   {
     title: "Essays and Articles",
     status: "Ongoing",
     blurb:
-      "A place for reflective long-form writing, public-facing science pieces, and analytical essays.",
+      "Long-form essays, analytical articles, and public-facing scientific writing.",
     href: "#writing"
   }
 ];
 
-export const readingRoom: ReadingEntry[] = [
-  { title: "To Curate", creator: "Book or article 01", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 02", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 03", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 04", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 05", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 06", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 07", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 08", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 09", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 10", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 11", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 12", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 13", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 14", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 15", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 16", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 17", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 18", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 19", kind: "Placeholder", href: "#" },
-  { title: "To Curate", creator: "Book or article 20", kind: "Placeholder", href: "#" }
+export const resumePoints: string[] = [
+  "Research spanning microscopy, biophysics, quantitative analysis, and experimental design.",
+  "Software practice covering scientific tooling, decision systems, and product direction.",
+  "Writing practice across fiction, essays, and scientific communication.",
+  "Analytical consulting for technical diligence, product evaluation, and structured judgment."
 ];
+
+export const contactLinks: ContactLink[] = [
+  {
+    label: "Email",
+    value: "pablo.gomez@icfo.eu",
+    href: "mailto:pablo.gomez@icfo.eu"
+  },
+  {
+    label: "GitHub",
+    value: "PabloAu",
+    href: "https://github.com/PabloAu"
+  },
+  {
+    label: "Scholar",
+    value: "Google Scholar profile",
+    href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
+  },
+  {
+    label: "CV",
+    value: "Short public resume",
+    href: "/documents/pablo-aurelio-resume.pdf"
+  }
+];
+
+const shelfKinds = [
+  "Science",
+  "Essay",
+  "Literature",
+  "Capital",
+  "Research"
+] as const;
+
+export const readingRoom: ReadingEntry[] = Array.from({ length: 20 }, (_, index) => {
+  const kind = shelfKinds[index % shelfKinds.length];
+  const number = String(index + 1).padStart(2, "0");
+
+  return {
+    title: `Selection ${number}`,
+    creator: `Curating ${kind.toLowerCase()} picks`,
+    kind,
+    href: "#marginalia"
+  };
+});

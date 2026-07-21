@@ -1,15 +1,21 @@
+import type { CSSProperties } from "react";
+import Image from "next/image";
+import { ContactForm } from "@/app/ContactForm";
 import {
   apps,
-  featuredItems,
-  focusAreas,
+  contactLinks,
+  disciplineTracks,
+  introParagraphs,
   navLinks,
   publications,
   readingRoom,
+  resumePoints,
   softwareProjects,
+  topLinks,
   writingProjects
 } from "@/data/site-content";
 
-function SectionHeader({
+function SectionHeading({
   eyebrow,
   title,
   copy
@@ -19,26 +25,31 @@ function SectionHeader({
   copy: string;
 }) {
   return (
-    <div className="section-header">
+    <div className="section-heading">
       <p className="eyebrow">{eyebrow}</p>
       <h2>{title}</h2>
-      <p className="section-copy">{copy}</p>
+      <p>{copy}</p>
     </div>
   );
 }
 
+const shelfTones = [
+  "var(--cover-tone-1)",
+  "var(--cover-tone-2)",
+  "var(--cover-tone-3)",
+  "var(--cover-tone-4)",
+  "var(--cover-tone-5)"
+];
+
 export default function HomePage() {
   return (
     <main className="page-shell">
-      <div className="page-glow page-glow-left" />
-      <div className="page-glow page-glow-right" />
-
       <header className="site-header">
-        <a className="brand" href="#top">
-          pabloaurelio.com
+        <a className="site-name" href="#top">
+          pabloaurelio
         </a>
-        <nav className="top-nav" aria-label="Primary">
-          {navLinks.map((link) => (
+        <nav className="utility-nav" aria-label="External links">
+          {topLinks.map((link) => (
             <a key={link.label} href={link.href}>
               {link.label}
             </a>
@@ -46,230 +57,252 @@ export default function HomePage() {
         </nav>
       </header>
 
-      <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow">Pablo Aurelio Gomez Garcia</p>
-          <h1>
-            Research, software, and writing organized into one clear body of
-            work.
-          </h1>
-          <p className="hero-text">
-            Microscopy and biophysics. Data and image analysis. Open-source
-            tooling. Decision-support apps. Literary work. Technical diligence.
-            One personal site, designed to make the range readable.
-          </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#research">
-              Explore the work
-            </a>
-            <a className="button button-secondary" href="#resume">
-              Resume and CV
-            </a>
-          </div>
-        </div>
+      <div className="content-column">
+        <section className="hero-block" id="top">
+          <figure className="hero-figure">
+            <Image
+              src="/images/pablo-hero-cajal-vintage.png"
+              alt="Vintage portrait of Pablo Aurelio Gomez Garcia in a Cajal-inspired study with books, microscope, and computing references."
+              width={1790}
+              height={895}
+              priority
+            />
+          </figure>
 
-        <aside className="hero-panel">
-          <p className="panel-label">Current shape</p>
-          <ul>
-            <li>Scientific branch with publications and research snapshots</li>
-            <li>Software portfolio spanning public repos and internal tools</li>
-            <li>Personal Lab, Capital Lab, and Slowball-related products</li>
-            <li>Fiction, essays, articles, and a future Reading Room</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section className="focus-grid">
-        {focusAreas.map((area) => (
-          <a className="focus-card" href={area.href} key={area.title}>
-            <p className="eyebrow">{area.eyebrow}</p>
-            <h3>{area.title}</h3>
-            <p>{area.description}</p>
-          </a>
-        ))}
-      </section>
-
-      <section className="section-block">
-        <SectionHeader
-          eyebrow="Selected Work"
-          title="A homepage that can hold multiple disciplines without feeling busy."
-          copy="Featured items work as cross-links between branches so the site feels unified rather than split into isolated careers."
-        />
-        <div className="featured-grid">
-          {featuredItems.map((item) => (
-            <a className="featured-card" href={item.href} key={item.title}>
-              <div className="meta-row">
-                <span>{item.category}</span>
-                <span>{item.year}</span>
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.blurb}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-block" id="research">
-        <SectionHeader
-          eyebrow="Research"
-          title="A publication shelf instead of a generic academic list."
-          copy="The scientific branch should feel deliberate and visual. These cards can later evolve into image-led publication entries, either linking to Google Scholar or to dedicated article pages."
-        />
-        <div className="publication-grid">
-          {publications.map((publication) => (
-            <a className="publication-card" href={publication.href} key={publication.title}>
-              <p className="publication-journal">
-                {publication.journal} <span>{publication.year}</span>
+          <div className="intro-block">
+            <p className="nameplate">Pablo Aurelio Gomez Garcia</p>
+            <h1>Researcher, builder, writer, and long-horizon thinker.</h1>
+            {introParagraphs.map((paragraph) => (
+              <p className="intro-copy" key={paragraph}>
+                {paragraph}
               </p>
-              <h3>{publication.title}</h3>
-              <p className="publication-link">Open publication</p>
-            </a>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
 
-      <section className="section-block" id="software">
-        <SectionHeader
-          eyebrow="Software"
-          title="Tools and repositories with room to grow into full project pages."
-          copy="The first version presents the software branch as compact cards. Later we can add case studies, screenshots, docs links, and technical notes."
-        />
-        <div className="card-grid">
-          {softwareProjects.map((project) => (
-            <a className="info-card" href={project.href} key={project.title}>
-              <div className="meta-row">
-                <span>{project.status}</span>
-              </div>
-              <h3>{project.title}</h3>
-              <p>{project.blurb}</p>
-            </a>
-          ))}
-        </div>
-      </section>
+          <nav className="section-nav" aria-label="Internal sections">
+            {navLinks.map((link) => (
+              <a key={link.label} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </section>
 
-      <section className="section-block dual-section" id="apps">
-        <div>
-          <SectionHeader
-            eyebrow="Apps"
-            title="Product work for thinking, research, and decision making."
-            copy="Personal Lab and Capital Lab deserve their own branch because they are more than repositories: they are product ideas with interface, workflow, and philosophy."
+        <section className="content-section" id="index">
+          <SectionHeading
+            eyebrow="Index"
+            title="A clear map of the work."
+            copy="The homepage now behaves more like a precise personal index: fewer boxes, more breathing room, and stronger hierarchy."
           />
-          <div className="card-grid compact-grid">
-            {apps.map((app) => (
-              <a className="info-card" href={app.href} key={app.title}>
-                <div className="meta-row">
-                  <span>{app.status}</span>
+
+          <div className="branch-list">
+            {disciplineTracks.map((track) => (
+              <a className="branch-row" href={track.href} key={track.title}>
+                <div className="branch-meta">
+                  <span>{track.eyebrow}</span>
                 </div>
-                <h3>{app.title}</h3>
-                <p>{app.blurb}</p>
+                <div className="branch-copy">
+                  <h3>{track.title}</h3>
+                  <p>{track.description}</p>
+                </div>
               </a>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="slowball-panel" id="slowball">
-          <p className="eyebrow">Slowball</p>
-          <h2>Slowball can anchor the financial and long-horizon branch.</h2>
-          <p>
-            A dedicated space for the Slowball project, its philosophy, its
-            tracker, and the surrounding tools can sit between software and
-            analytical writing.
-          </p>
-          <ul className="detail-list">
-            <li>Project overview and thesis</li>
-            <li>Tracker and portfolio tooling</li>
-            <li>Related essays and notes</li>
-            <li>Bridge into Capital Lab</li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="section-block dual-section" id="writing">
-        <div>
-          <SectionHeader
-            eyebrow="Writing"
-            title="A literary branch with enough quiet around it."
-            copy="The writing section should not look like the software section. It needs a calmer tone and room for novels, short fiction, essays, and science communication."
+        <section className="content-section" id="research">
+          <SectionHeading
+            eyebrow="Scientific branch"
+            title="Selected publications and image-led research."
+            copy="The scientific branch should feel serious, readable, and easy to extend later into dedicated paper pages, figures, notes, or research essays."
           />
-          <div className="card-grid compact-grid">
-            {writingProjects.map((item) => (
-              <a className="info-card writing-card" href={item.href} key={item.title}>
-                <div className="meta-row">
-                  <span>{item.status}</span>
+
+          <div className="paper-list">
+            {publications.map((publication) => (
+              <a className="paper-row" href={publication.href} key={publication.title}>
+                <div className="paper-meta">
+                  <span>{publication.year}</span>
+                  <span>{publication.journal}</span>
                 </div>
-                <h3>{item.title}</h3>
-                <p>{item.blurb}</p>
+                <h3>{publication.title}</h3>
               </a>
             ))}
           </div>
-        </div>
 
-        <div className="consulting-panel" id="consulting">
-          <p className="eyebrow">Consulting</p>
-          <h2>Technical diligence and analytical support, framed with clarity.</h2>
-          <p>
-            This branch can present scientific, technical, and software-oriented
-            diligence work in a direct, trust-heavy format aimed at serious
-            clients.
-          </p>
-          <ul className="detail-list">
-            <li>Technical diligence</li>
-            <li>Research and product evaluation</li>
-            <li>Scientific and analytical advisory</li>
-            <li>Image, data, and software workflows</li>
-          </ul>
-        </div>
-      </section>
+          <a
+            className="inline-link"
+            href="https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
+          >
+            View the full Google Scholar profile
+          </a>
+        </section>
 
-      <section className="section-block" id="resume">
-        <SectionHeader
-          eyebrow="Resume"
-          title="Use a concise public resume, with the academic CV available alongside it."
-          copy="The short company-facing PDF is better for fast reading. The 2026 academic CV should remain available for research and institutional contexts."
-        />
-        <div className="resume-panel">
-          <div>
-            <h3>Recommended presentation</h3>
+        <section className="content-section" id="software">
+          <SectionHeading
+            eyebrow="Software and apps"
+            title="Code, products, and Slowball systems."
+            copy="Repositories, analytical tooling, and decision products belong in one branch, but still need distinct room for software, apps, and the Slowball project."
+          />
+
+          <div className="stack-list">
+            {softwareProjects.map((project) => (
+              <a className="stack-row" href={project.href} key={project.title}>
+                <div className="stack-meta">
+                  <span>{project.status}</span>
+                </div>
+                <div className="stack-copy">
+                  <h3>{project.title}</h3>
+                  <p>{project.blurb}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="subsection">
+            <p className="subsection-label">Apps in development</p>
+            <div className="stack-list">
+              {apps.map((app) => (
+                <a className="stack-row" href={app.href} key={app.title}>
+                  <div className="stack-meta">
+                    <span>{app.status}</span>
+                  </div>
+                  <div className="stack-copy">
+                    <h3>{app.title}</h3>
+                    <p>{app.blurb}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <article className="slowball-note">
+            <p className="eyebrow">Slowball</p>
+            <h3>A long-horizon branch with its own visual language.</h3>
             <p>
-              A web-native resume summary on the site, plus two downloads: a
-              short resume and a full academic CV.
+              Slowball links portfolio thinking, tracking tools, essays, and
+              product work. It should read as a serious branch of the site, not
+              as a side project.
             </p>
-          </div>
-          <div className="resume-actions">
-            <a className="button button-primary" href="/documents/pablo-aurelio-resume.pdf">
-              Download short resume
-            </a>
-            <a
-              className="button button-secondary"
-              href="/documents/pablo-aurelio-academic-cv-2026.pdf"
-            >
-              Download academic CV
-            </a>
-          </div>
-        </div>
-      </section>
+          </article>
+        </section>
 
-      <section className="section-block" id="reading-room">
-        <SectionHeader
-          eyebrow="Reading Room"
-          title="A 4x5 catalog for books, essays, papers, and signal."
-          copy="This section is scaffolded for a Netflix-like grid. Once you choose the first twenty items, we can replace the placeholders with covers and real destination links."
-        />
-        <div className="reading-grid">
-          {readingRoom.map((entry, index) => (
-            <a className="reading-card" href={entry.href} key={`${entry.title}-${index}`}>
-              <div className="reading-cover">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="reading-copy">
-                <p className="reading-kind">{entry.kind}</p>
-                <h3>{entry.title}</h3>
-                <p>{entry.creator}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+        <section className="content-section" id="writing">
+          <SectionHeading
+            eyebrow="Writing and consulting"
+            title="Literature, essays, and analytical judgment."
+            copy="This branch stays quieter and more authored than the software branch, while leaving space for fiction, essays, and technical diligence work."
+          />
+
+          <div className="stack-list">
+            {writingProjects.map((project) => (
+              <a className="stack-row" href={project.href} key={project.title}>
+                <div className="stack-meta">
+                  <span>{project.status}</span>
+                </div>
+                <div className="stack-copy">
+                  <h3>{project.title}</h3>
+                  <p>{project.blurb}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <article className="consulting-note">
+            <p className="subsection-label">Technical diligence</p>
+            <p>
+              Scientific, software, and product-oriented diligence work will
+              live here too: careful evaluation, structured judgment, and clear
+              synthesis for collaborators or clients.
+            </p>
+          </article>
+        </section>
+
+        <section className="content-section" id="resume">
+          <SectionHeading
+            eyebrow="Resume"
+            title="A short public profile, plus the full CV."
+            copy="The web version should stay concise. The fuller academic and company-facing versions can live as downloadable PDFs."
+          />
+
+          <div className="resume-panel">
+            <ul className="resume-list">
+              {resumePoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+
+            <div className="button-row">
+              <a className="button button-primary" href="/documents/pablo-aurelio-resume.pdf">
+                Download short resume
+              </a>
+              <a
+                className="button button-secondary"
+                href="/documents/pablo-aurelio-academic-cv-2026.pdf"
+              >
+                Download academic CV
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="content-section" id="marginalia">
+          <SectionHeading
+            eyebrow="Marginalia"
+            title="A shelf for books, papers, and essays worth revisiting."
+            copy="The grid is already structured for twenty selections, so we can later swap the placeholders for your own catalogue without changing the layout."
+          />
+
+          <div className="reading-grid">
+            {readingRoom.map((entry, index) => (
+              <a
+                className="reading-card"
+                href={entry.href}
+                key={`${entry.title}-${entry.kind}`}
+                style={
+                  {
+                    "--cover-tone": shelfTones[index % shelfTones.length]
+                  } as CSSProperties
+                }
+              >
+                <div className="reading-cover">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="reading-copy">
+                  <p>{entry.kind}</p>
+                  <h3>{entry.title}</h3>
+                  <span>{entry.creator}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="content-section contact-layout" id="contact">
+          <div>
+            <SectionHeading
+              eyebrow="Contact"
+              title="For research, software, writing, or diligence work."
+              copy="The first version of the form stays static-safe by opening a prefilled email draft, while direct links remain available below."
+            />
+
+            <div className="contact-links">
+              {contactLinks.map((link) => (
+                <a className="contact-link" href={link.href} key={link.label}>
+                  <span>{link.label}</span>
+                  <strong>{link.value}</strong>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <ContactForm />
+        </section>
+      </div>
+
+      <footer className="site-footer">
+        <p>Pablo Aurelio Gomez Garcia</p>
+        <p>Science, software, writing, and long-horizon work.</p>
+      </footer>
     </main>
   );
 }
