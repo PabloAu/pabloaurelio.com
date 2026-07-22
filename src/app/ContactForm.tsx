@@ -57,7 +57,7 @@ export function ContactForm() {
           id="message"
           name="message"
           rows={4}
-          placeholder="Write to Pablo."
+          placeholder="Write me."
           required
         />
       </div>

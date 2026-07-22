@@ -76,7 +76,7 @@ export default function HomePage() {
               Enter the study
             </a>
             <a className="button button-secondary" href="#contact">
-              Write to Pablo
+              Write me
             </a>
           </div>
         </div>

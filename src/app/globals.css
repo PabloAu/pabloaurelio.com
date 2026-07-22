@@ -163,9 +163,11 @@ select {
   font-size: clamp(1.15rem, 1.8vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.03em;
+  line-height: 0.94;
+  text-align: center;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
   transform: translate(-50%, -50%);
-  white-space: nowrap;
+  white-space: pre-line;
 }
 
 .hero-pin:hover {
@@ -531,7 +533,7 @@ select {
     left: auto;
     top: auto;
     transform: none;
-    white-space: normal;
+    white-space: pre-line;
   }
 
   .hero-pin:hover {
