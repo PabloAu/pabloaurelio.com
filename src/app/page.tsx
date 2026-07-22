@@ -28,7 +28,7 @@ export default function HomePage() {
         <div className="hero-stage">
           <Image
             className="hero-image"
-            src="/images/pablo-hero-cajal-vintage.png"
+            src="/images/pablo-hero-cajal-vintage-balanced.png"
             alt="Pablo Aurelio Gomez Garcia in a vintage study portrait."
             fill
             priority
