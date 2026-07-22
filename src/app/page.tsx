@@ -1,14 +1,12 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import { ContactForm } from "@/app/ContactForm";
-import { ExperienceAtlas } from "@/app/ExperienceAtlas";
 import {
-  atlasClusters,
-  atlasEdges,
   contactLinks,
-  hubHighlights,
+  heroMarkers,
+  practiceSections,
   readingRoom,
   resumePoints,
-  sectionLinks,
   topLinks
 } from "@/data/site-content";
 
@@ -23,94 +21,121 @@ const shelfTones = [
 export default function HomePage() {
   return (
     <main className="page-shell">
-      <header className="site-header">
-        <div className="site-brand">
-          <a className="site-name" href="#atlas">
-            pabloaurelio
-          </a>
-          <p className="site-subtitle">
-            Graph surfaces for science, software, writing, and patient systems.
-          </p>
-        </div>
+      <section className="hero-shell" id="top">
+        <div className="hero-stage">
+          <Image
+            className="hero-image"
+            src="/images/pablo-hero-cajal-vintage.png"
+            alt="Pablo Aurelio Gomez Garcia in a vintage study portrait."
+            fill
+            priority
+            sizes="100vw"
+          />
 
-        <nav className="utility-nav" aria-label="External links">
-          {topLinks.map((link) => (
-            <a key={link.label} href={link.href}>
-              {link.label}
+          <div className="hero-patina" aria-hidden="true" />
+          <div className="hero-grain" aria-hidden="true" />
+
+          <header className="site-header">
+            <a className="site-name" href="#top">
+              pabloaurelio
             </a>
-          ))}
-        </nav>
-      </header>
 
-      <ExperienceAtlas
-        clusters={atlasClusters}
-        edges={atlasEdges}
-        hubHighlights={hubHighlights}
-        sectionLinks={sectionLinks}
-      />
-
-      <section className="support-grid">
-        <article className="support-panel resume-panel" id="resume">
-          <div className="panel-heading">
-            <p className="eyebrow">Resume capsule</p>
-            <h2>A concise public profile with room for deeper documents.</h2>
-            <p>
-              The public page stays selective. The full career detail can live
-              in the downloadable CV formats while the graph handles discovery.
-            </p>
-          </div>
-
-          <ul className="resume-list">
-            {resumePoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-
-          <div className="button-row">
-            <a className="button button-primary" href="/documents/pablo-aurelio-resume.pdf">
-              Download short resume
-            </a>
-            <a
-              className="button button-secondary"
-              href="/documents/pablo-aurelio-academic-cv-2026.pdf"
-            >
-              Download academic CV
-            </a>
-          </div>
-        </article>
-
-        <section className="support-panel contact-panel" id="contact">
-          <div className="contact-copy">
-            <div className="panel-heading">
-              <p className="eyebrow">Contact dock</p>
-              <h2>For collaborations, software, writing, or technical diligence.</h2>
-              <p>
-                The site now works like a more interactive front door, but the
-                contact surface stays direct and practical.
-              </p>
-            </div>
-
-            <div className="contact-links">
-              {contactLinks.map((link) => (
-                <a className="contact-link" href={link.href} key={link.label}>
-                  <span>{link.label}</span>
-                  <strong>{link.value}</strong>
+            <nav className="utility-nav" aria-label="External links">
+              {topLinks.map((link) => (
+                <a key={link.label} href={link.href}>
+                  {link.label}
                 </a>
               ))}
+            </nav>
+          </header>
+
+          <div className="hero-copy">
+            <p className="eyebrow">Pablo Aurelio Gomez Garcia</p>
+            <h1>Science, software, literature, and patient systems.</h1>
+            <p className="hero-summary">
+              The books open the archive. The microscope opens the scientific
+              branch. The rest of the study opens the software, apps, writing,
+              consulting, and capital work.
+            </p>
+
+            <div className="hero-actions">
+              <a className="button button-primary" href="#research">
+                Enter the study
+              </a>
+              <a className="button button-secondary" href="#contact">
+                Write to Pablo
+              </a>
             </div>
           </div>
 
-          <ContactForm />
-        </section>
+          <div className="hero-pins" aria-label="Section markers">
+            {heroMarkers.map((marker) => (
+              <a
+                className="hero-pin"
+                href={marker.href}
+                key={marker.label}
+                style={
+                  {
+                    "--pin-x": `${marker.x}%`,
+                    "--pin-y": `${marker.y}%`,
+                    "--pin-tone": marker.tone
+                  } as CSSProperties
+                }
+              >
+                <span>{marker.detail}</span>
+                <strong>{marker.label}</strong>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <article className="support-panel archive-panel" id="marginalia">
-          <div className="panel-heading archive-heading">
-            <p className="eyebrow">Marginalia wall</p>
-            <h2>A mosaic archive for books, essays, papers, and future annotations.</h2>
+      <section className="study-shell">
+        {practiceSections.map((section) => (
+          <article
+            className="practice-section"
+            id={section.id}
+            key={section.id}
+            style={
+              {
+                "--section-tint": section.tint
+              } as CSSProperties
+            }
+          >
+            <div className="practice-heading">
+              <p className="eyebrow">{section.label}</p>
+              <h2>{section.title}</h2>
+            </div>
+
+            <div className="practice-body">
+              <p className="practice-summary">{section.summary}</p>
+              <p className="practice-text">{section.body}</p>
+
+              <ul className="practice-highlights">
+                {section.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+
+              <div className="practice-actions">
+                {section.actions.map((action) => (
+                  <a className="section-action" href={action.href} key={action.label}>
+                    {action.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+
+        <article className="reading-section" id="marginalia">
+          <div className="section-intro">
+            <p className="eyebrow">Marginalia</p>
+            <h2>A shelf for books, essays, papers, and old companions.</h2>
             <p>
-              The shelf stays visual and expandable, ready to become a more
-              personal catalogue once you start curating the actual twenty
-              entries.
+              This stays visual and quiet. It can later become a more personal
+              archive, but it already reads like a room with references rather
+              than a list of links.
             </p>
           </div>
 
@@ -127,22 +152,75 @@ export default function HomePage() {
                 }
               >
                 <div className="reading-cover">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                </div>
-                <div className="reading-copy">
                   <p>{entry.kind}</p>
                   <h3>{entry.title}</h3>
-                  <span>{entry.creator}</span>
                 </div>
+                <span>{entry.creator}</span>
               </a>
             ))}
           </div>
         </article>
+
+        <article className="resume-section" id="resume">
+          <div className="section-intro">
+            <p className="eyebrow">CV</p>
+            <h2>A short public record and a longer academic version.</h2>
+            <p>
+              The site can stay selective while the formal documents carry the
+              full chronology.
+            </p>
+          </div>
+
+          <ul className="resume-list">
+            {resumePoints.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+
+          <div className="hero-actions">
+            <a className="button button-primary" href="/documents/pablo-aurelio-resume.pdf">
+              Download short resume
+            </a>
+            <a
+              className="button button-secondary"
+              href="/documents/pablo-aurelio-academic-cv-2026.pdf"
+            >
+              Download academic CV
+            </a>
+          </div>
+        </article>
+
+        <section className="contact-section" id="contact">
+          <div className="contact-copy">
+            <div className="section-intro contact-intro">
+              <p className="eyebrow">Contact</p>
+              <h2>For collaborations, software, writing, diligence, or research.</h2>
+              <p>
+                This section stays simple. The rest of the page can be more
+                atmospheric, but reaching you should remain direct.
+              </p>
+            </div>
+
+            <div className="contact-links">
+              {contactLinks.map((link) => (
+                <a className="contact-link" href={link.href} key={link.label}>
+                  <span>{link.label}</span>
+                  <strong>{link.value}</strong>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="contact-form-shell">
+            <p className="eyebrow">Write directly</p>
+            <ContactForm />
+          </div>
+        </section>
       </section>
 
       <footer className="site-footer">
         <p>Pablo Aurelio Gomez Garcia</p>
-        <p>Built as an interactive atlas rather than a conventional portfolio.</p>
+        <p>A vintage study for science, software, writing, and patient systems.</p>
       </footer>
     </main>
   );

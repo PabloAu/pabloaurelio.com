@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pablo Aurelio Gomez Garcia | Interactive Atlas",
+  title: "Pablo Aurelio Gomez Garcia | Study",
   description:
-    "An interactive atlas of Pablo Aurelio Gomez Garcia's research, software, writing, apps, capital work, and analytical consulting."
+    "A vintage, image-led personal study for Pablo Aurelio Gomez Garcia's research, software, writing, apps, Slowball work, and consulting."
 };
 
 export default function RootLayout({
