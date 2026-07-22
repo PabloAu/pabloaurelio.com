@@ -42,22 +42,19 @@ export type ContactLink = {
   href: string;
 };
 
-export const topLinks: SectionLink[] = [
-  { label: "CV", href: "/documents/pablo-aurelio-resume.pdf" },
-  {
-    label: "Scholar",
-    href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
-  },
-  { label: "GitHub", href: "https://github.com/PabloAu" },
-  { label: "Contact", href: "#contact" }
-];
+export const heroQuote = {
+  text:
+    "Toda obra grande, en arte como en ciencia, es el resultado de una gran pasión puesta al servicio de una gran idea.",
+  attribution: "Santiago Ramon y Cajal",
+  sourceLabel: "Reglas y consejos sobre investigacion cientifica",
+  sourceHref: "https://gutenberg.org/files/66373/66373-h/66373-h.htm"
+};
 
 export const sectionNavLinks: SectionLink[] = [
   { label: "Research", href: "#research" },
   { label: "Software", href: "#software" },
-  { label: "Apps", href: "#apps" },
   { label: "Investing", href: "#slowball" },
-  { label: "Writing", href: "#writing" },
+  { label: "Literature", href: "#literature" },
   { label: "Library", href: "#library" },
   { label: "Consulting", href: "#consulting" },
   { label: "Contact", href: "#contact" }
@@ -69,49 +66,42 @@ export const heroMarkers: HeroMarker[] = [
     href: "#software",
     x: 12,
     y: 53,
-    tone: "#d9cfac"
+    tone: "#6d86a6"
   },
   {
     label: "Library",
     href: "#library",
     x: 59,
     y: 15,
-    tone: "#d9cfac"
+    tone: "#6d86a6"
   },
   {
     label: "Research",
     href: "#research",
     x: 39,
     y: 46,
-    tone: "#d9cfac"
-  },
-  {
-    label: "Apps",
-    href: "#apps",
-    x: 24,
-    y: 60,
-    tone: "#d9cfac"
+    tone: "#6d86a6"
   },
   {
     label: "Consulting",
     href: "#consulting",
     x: 87,
     y: 31,
-    tone: "#d9cfac"
+    tone: "#6d86a6"
   },
   {
-    label: "Writing",
-    href: "#writing",
-    x: 18,
-    y: 66,
-    tone: "#d9cfac"
+    label: "Literature",
+    href: "#literature",
+    x: 17,
+    y: 70,
+    tone: "#6d86a6"
   },
   {
     label: "Investing\neducation",
     href: "#slowball",
     x: 90,
     y: 84,
-    tone: "#d9cfac"
+    tone: "#6d86a6"
   }
 ];
 
@@ -203,29 +193,12 @@ export const gallerySections: GallerySection[] = [
         meta: "Portfolio software",
         title: "SlowballTracker",
         href: "#slowball"
-      }
-    ]
-  },
-  {
-    id: "apps",
-    label: "Apps",
-    layout: "landscape",
-    background:
-      "linear-gradient(180deg, rgba(239, 228, 222, 1) 0%, rgba(228, 213, 205, 1) 100%)",
-    overlay:
-      "radial-gradient(circle at 18% 14%, rgba(181, 144, 121, 0.18), transparent 28%), radial-gradient(circle at 86% 32%, rgba(209, 175, 154, 0.14), transparent 24%)",
-    cardFrom: "#ccb8aa",
-    cardTo: "#efe3da",
-    ink: "#34261c",
-    muted: "#6f5a4f",
-    accent: "#9d7d67",
-    items: [
+      },
       {
         badge: "App",
         meta: "Knowledge and decisions",
         title: "Personal Lab",
-        href: "#contact",
-        featured: true
+        href: "#contact"
       },
       {
         badge: "App",
@@ -273,14 +246,14 @@ export const gallerySections: GallerySection[] = [
       {
         badge: "Notes",
         meta: "Capital and patience",
-        title: "Slow capital writing",
-        href: "#writing"
+        title: "Slow capital notes",
+        href: "#literature"
       }
     ]
   },
   {
-    id: "writing",
-    label: "Writing",
+    id: "literature",
+    label: "Literature",
     layout: "landscape",
     background:
       "linear-gradient(180deg, rgba(238, 228, 229, 1) 0%, rgba(223, 209, 210, 1) 100%)",

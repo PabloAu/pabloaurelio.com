@@ -9,6 +9,7 @@
   --ink: #322418;
   --ink-soft: #6a5848;
   --ink-hero: #f5e7c6;
+  --klee-blue: #6d86a6;
   --paper: #eadabc;
 }
 
@@ -114,12 +115,8 @@ select {
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
 }
 
-.site-summary,
-.site-credit {
-  margin: 0;
-}
-
 .site-summary {
+  margin: 0;
   max-width: 29rem;
   color: rgba(245, 231, 198, 0.9);
   font-family: var(--font-display), serif;
@@ -127,14 +124,6 @@ select {
   font-style: italic;
   line-height: 1.55;
   text-wrap: balance;
-}
-
-.site-credit {
-  color: rgba(245, 231, 198, 0.68);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.66rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .scroll-nav-inner,
@@ -200,22 +189,35 @@ select {
   left: 34px;
   bottom: 28px;
   z-index: 3;
-  gap: 12px 14px;
+  gap: 10px 18px;
 }
 
+.hero-link,
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.hero-link {
+  color: rgba(176, 197, 221, 0.96);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1rem, 1.18vw, 1.18rem);
+  font-style: italic;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.44);
+}
+
+.hero-link:hover,
+.item-card:hover {
+  transform: translateY(-1px);
+}
+
+.button {
   min-height: 42px;
   padding: 0 16px;
   border-radius: 999px;
   font-size: 0.88rem;
-}
-
-.button:hover,
-.item-card:hover {
-  transform: translateY(-1px);
 }
 
 .button-primary {
@@ -227,6 +229,41 @@ select {
   background: rgba(245, 231, 198, 0.14);
   color: var(--ink-hero);
   backdrop-filter: blur(10px);
+}
+
+.hero-quote {
+  position: absolute;
+  right: 34px;
+  bottom: 28px;
+  z-index: 3;
+  width: min(30rem, calc(100% - 68px));
+  text-align: right;
+}
+
+.hero-quote p,
+.hero-quote cite {
+  margin: 0;
+}
+
+.hero-quote p {
+  color: rgba(235, 226, 208, 0.86);
+  font-family: var(--font-display), serif;
+  font-size: clamp(0.86rem, 0.98vw, 1rem);
+  font-style: italic;
+  line-height: 1.55;
+  text-wrap: balance;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.48);
+}
+
+.hero-quote cite {
+  display: inline-block;
+  margin-top: 8px;
+  color: rgba(193, 205, 220, 0.82);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .scroll-nav {
@@ -582,6 +619,12 @@ select {
   .hero-dock {
     left: 22px;
     bottom: 24px;
+  }
+
+  .hero-quote {
+    right: 22px;
+    bottom: 24px;
+    width: min(18rem, calc(100% - 44px));
   }
 
   .showcase-inner,

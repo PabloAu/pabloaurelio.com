@@ -5,6 +5,7 @@ import {
   contactLinks,
   gallerySections,
   heroMarkers,
+  heroQuote,
   sectionNavLinks
 } from "@/data/site-content";
 
@@ -43,12 +44,12 @@ export default function HomePage() {
                 pabloaurelio
               </a>
               <p className="site-summary">
-                Scientist, software builder, writer, and investor. A personal
-                study of research, tools, literature, consulting, and investing
-                education.
-              </p>
-              <p className="site-credit">
-                After Santiago Ramon y Cajal&apos;s study portrait.
+                I am a senior scientist at ETH Zurich, working on imaging and
+                biophysics. I write novels and short stories; economics taught
+                me something about the world. I now help people manage wealth,
+                advise companies on technology and investment, and spend my free
+                time reading. Here I gather research, software, literature,
+                consulting, and a few recommendations.
               </p>
             </div>
           </header>
@@ -73,13 +74,22 @@ export default function HomePage() {
           </div>
 
           <div className="hero-dock">
-            <a className="button button-primary" href="#research">
+            <a className="hero-link" href="#research">
               Enter the study
             </a>
-            <a className="button button-secondary" href="#contact">
+            <a className="hero-link" href="#contact">
               Write me
             </a>
           </div>
+
+          <aside className="hero-quote">
+            <p>&ldquo;{heroQuote.text}&rdquo;</p>
+            <cite>
+              <a href={heroQuote.sourceHref}>
+                {heroQuote.attribution}, {heroQuote.sourceLabel}
+              </a>
+            </cite>
+          </aside>
         </div>
       </section>
 
@@ -159,7 +169,7 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <p>Pablo Aurelio Gomez Garcia</p>
-        <p>Science, software, writing, capital, and quiet systems.</p>
+        <p>Science, software, literature, capital, and quiet systems.</p>
       </footer>
     </main>
   );
