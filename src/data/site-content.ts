@@ -56,7 +56,7 @@ export const sectionNavLinks: SectionLink[] = [
   { label: "Research", href: "#research" },
   { label: "Software", href: "#software" },
   { label: "Apps", href: "#apps" },
-  { label: "Slowball", href: "#slowball" },
+  { label: "Investing", href: "#slowball" },
   { label: "Writing", href: "#writing" },
   { label: "Library", href: "#library" },
   { label: "Consulting", href: "#consulting" },
@@ -68,50 +68,50 @@ export const heroMarkers: HeroMarker[] = [
     label: "Software",
     href: "#software",
     x: 12,
-    y: 31,
-    tone: "#9bb7f0"
+    y: 53,
+    tone: "#8faed0"
   },
   {
     label: "Library",
     href: "#library",
-    x: 50,
-    y: 17,
-    tone: "#a9dbc2"
+    x: 59,
+    y: 15,
+    tone: "#a8cec2"
   },
   {
     label: "Research",
     href: "#research",
-    x: 40,
-    y: 43,
-    tone: "#f0d196"
+    x: 39,
+    y: 46,
+    tone: "#d9c38d"
   },
   {
     label: "Apps",
     href: "#apps",
-    x: 26,
-    y: 48,
-    tone: "#d7b4e8"
+    x: 24,
+    y: 60,
+    tone: "#b8d7c9"
   },
   {
     label: "Consulting",
     href: "#consulting",
-    x: 84,
-    y: 34,
-    tone: "#90d7d4"
+    x: 87,
+    y: 31,
+    tone: "#c8b8df"
   },
   {
     label: "Writing",
     href: "#writing",
-    x: 76,
-    y: 11,
-    tone: "#7da5f4"
+    x: 18,
+    y: 66,
+    tone: "#97b8df"
   },
   {
     label: "Investing\neducation",
     href: "#slowball",
-    x: 89,
-    y: 78,
-    tone: "#b7e7c6"
+    x: 90,
+    y: 84,
+    tone: "#ddd5a2"
   }
 ];
 

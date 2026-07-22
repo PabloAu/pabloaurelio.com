@@ -5,8 +5,7 @@ import {
   contactLinks,
   gallerySections,
   heroMarkers,
-  sectionNavLinks,
-  topLinks
+  sectionNavLinks
 } from "@/data/site-content";
 
 function buildSectionStyles(section: (typeof gallerySections)[number]) {
@@ -39,17 +38,19 @@ export default function HomePage() {
           <div className="hero-grain" aria-hidden="true" />
 
           <header className="site-header">
-            <a className="site-name" href="#top">
-              pabloaurelio
-            </a>
-
-            <nav className="utility-nav" aria-label="External links">
-              {topLinks.map((link) => (
-                <a key={link.label} href={link.href}>
-                  {link.label}
-                </a>
-              ))}
-            </nav>
+            <div className="site-intro">
+              <a className="site-name" href="#top">
+                pabloaurelio
+              </a>
+              <p className="site-summary">
+                Scientist, software builder, writer, and investor. A personal
+                study of research, tools, literature, consulting, and investing
+                education.
+              </p>
+              <p className="site-credit">
+                After Santiago Ramon y Cajal&apos;s study portrait.
+              </p>
+            </div>
           </header>
 
           <div className="hero-pins" aria-label="Section markers">
@@ -84,11 +85,17 @@ export default function HomePage() {
 
       <nav className="scroll-nav" aria-label="Section navigation">
         <div className="scroll-nav-inner">
-          {sectionNavLinks.map((link) => (
-            <a key={link.label} href={link.href}>
-              {link.label}
-            </a>
-          ))}
+          <a className="scroll-nav-brand" href="#top">
+            pabloaurelio
+          </a>
+
+          <div className="scroll-nav-links">
+            {sectionNavLinks.map((link) => (
+              <a key={link.label} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
