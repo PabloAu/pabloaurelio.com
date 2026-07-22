@@ -69,49 +69,49 @@ export const heroMarkers: HeroMarker[] = [
     href: "#software",
     x: 12,
     y: 53,
-    tone: "#8faed0"
+    tone: "#d9cfac"
   },
   {
     label: "Library",
     href: "#library",
     x: 59,
     y: 15,
-    tone: "#a8cec2"
+    tone: "#d9cfac"
   },
   {
     label: "Research",
     href: "#research",
     x: 39,
     y: 46,
-    tone: "#d9c38d"
+    tone: "#d9cfac"
   },
   {
     label: "Apps",
     href: "#apps",
     x: 24,
     y: 60,
-    tone: "#b8d7c9"
+    tone: "#d9cfac"
   },
   {
     label: "Consulting",
     href: "#consulting",
     x: 87,
     y: 31,
-    tone: "#c8b8df"
+    tone: "#d9cfac"
   },
   {
     label: "Writing",
     href: "#writing",
     x: 18,
     y: 66,
-    tone: "#97b8df"
+    tone: "#d9cfac"
   },
   {
     label: "Investing\neducation",
     href: "#slowball",
     x: 90,
     y: 84,
-    tone: "#ddd5a2"
+    tone: "#d9cfac"
   }
 ];
 

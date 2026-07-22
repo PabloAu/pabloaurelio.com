@@ -177,8 +177,8 @@ select {
   color: var(--pin-tone);
   opacity: 0.9;
   font-family: var(--font-mono), monospace;
-  font-size: clamp(0.72rem, 0.9vw, 0.96rem);
-  font-weight: 500;
+  font-size: clamp(0.9rem, 1.14vw, 1.2rem);
+  font-weight: 600;
   letter-spacing: 0.18em;
   line-height: 1.35;
   text-align: center;
