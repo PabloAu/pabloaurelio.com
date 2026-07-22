@@ -3,12 +3,6 @@ export type SectionLink = {
   href: string;
 };
 
-export type ContactLink = {
-  label: string;
-  value: string;
-  href: string;
-};
-
 export type HeroMarker = {
   label: string;
   href: string;
@@ -17,26 +11,34 @@ export type HeroMarker = {
   tone: string;
 };
 
-export type PracticeAction = {
-  label: string;
+export type GalleryItem = {
+  title: string;
+  meta: string;
+  badge: string;
   href: string;
+  note?: string;
+  featured?: boolean;
 };
 
-export type PracticeSection = {
+export type GallerySection = {
   id: string;
   label: string;
-  title: string;
-  summary: string;
-  body: string;
-  highlights: string[];
-  actions: PracticeAction[];
-  tint: string;
+  linkLabel?: string;
+  linkHref?: string;
+  layout: "landscape" | "portrait";
+  background: string;
+  overlay: string;
+  cardFrom: string;
+  cardTo: string;
+  ink: string;
+  muted: string;
+  accent: string;
+  items: GalleryItem[];
 };
 
-export type ReadingEntry = {
-  title: string;
-  creator: string;
-  kind: string;
+export type ContactLink = {
+  label: string;
+  value: string;
   href: string;
 };
 
@@ -50,6 +52,17 @@ export const topLinks: SectionLink[] = [
   { label: "Contact", href: "#contact" }
 ];
 
+export const sectionNavLinks: SectionLink[] = [
+  { label: "Research", href: "#research" },
+  { label: "Software", href: "#software" },
+  { label: "Apps", href: "#apps" },
+  { label: "Slowball", href: "#slowball" },
+  { label: "Writing", href: "#writing" },
+  { label: "Library", href: "#library" },
+  { label: "Consulting", href: "#consulting" },
+  { label: "Contact", href: "#contact" }
+];
+
 export const heroMarkers: HeroMarker[] = [
   {
     label: "Software",
@@ -59,8 +72,8 @@ export const heroMarkers: HeroMarker[] = [
     tone: "#dcb873"
   },
   {
-    label: "Marginalia",
-    href: "#marginalia",
+    label: "Library",
+    href: "#library",
     x: 50,
     y: 17,
     tone: "#f2d8a1"
@@ -102,137 +115,327 @@ export const heroMarkers: HeroMarker[] = [
   }
 ];
 
-export const practiceSections: PracticeSection[] = [
+export const gallerySections: GallerySection[] = [
   {
     id: "research",
     label: "Research",
-    title: "Microscopy, biophysics, and quantitative cell biology.",
-    summary:
-      "The scientific branch is grounded in microscopy, chromatin, cytoplasm, and careful quantitative reasoning.",
-    body:
-      "This section should feel exact and quiet. It is where papers, methods, and the more durable part of your scientific identity live.",
-    highlights: [
-      "Google Scholar as the public research archive",
-      "A strong visual anchor in microscopy and imaging",
-      "A bridge between experiments, data, and interpretation"
-    ],
-    actions: [
+    linkLabel: "Scholar",
+    linkHref: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es",
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(245, 239, 229, 1) 0%, rgba(231, 223, 209, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 14% 12%, rgba(192, 179, 149, 0.22), transparent 28%), radial-gradient(circle at 84% 18%, rgba(151, 175, 158, 0.18), transparent 22%)",
+    cardFrom: "#d5ccb9",
+    cardTo: "#eee5d3",
+    ink: "#2f2419",
+    muted: "#675847",
+    accent: "#7a6b53",
+    items: [
       {
-        label: "Open Scholar profile",
+        badge: "2026",
+        meta: "Journal of Cell Biology",
+        title:
+          "The environmental stress response regulates biophysics of the cytoplasm and survival in quiescence",
+        href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es",
+        featured: true
+      },
+      {
+        badge: "2025",
+        meta: "Molecular Cell",
+        title:
+          "Timing of transcription controls the selective translation of newly synthesized mRNAs during acute environmental stress",
         href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
       },
       {
-        label: "See the 2019 nucleosome paper",
+        badge: "2025",
+        meta: "Cell Reports",
+        title:
+          "Polysomes and mRNA control the biophysical properties of the eukaryotic cytoplasm",
+        href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
+      },
+      {
+        badge: "2019",
+        meta: "Nucleic Acids Research",
+        title:
+          "Super-resolution microscopy reveals how histone tail acetylation affects DNA compaction within nucleosomes in vivo",
         href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6895258/"
       }
-    ],
-    tint: "#efe9d9"
+    ]
   },
   {
     id: "software",
     label: "Software",
-    title: "Analytical tools, code, and experimental systems.",
-    summary:
-      "Code appears here as a working craft: scientific tooling, analysis pipelines, internal systems, and product-oriented builds.",
-    body:
-      "Instead of feeling like a repository dump, this section should read as software in the service of understanding, judgment, and durable systems.",
-    highlights: [
-      "Public repositories on GitHub",
-      "Scientific analysis and workflow tooling",
-      "Product-minded implementation for real use"
-    ],
-    actions: [
-      { label: "Open GitHub", href: "https://github.com/PabloAu" },
+    linkLabel: "GitHub",
+    linkHref: "https://github.com/PabloAu",
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(31, 26, 22, 1) 0%, rgba(18, 15, 13, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 12% 22%, rgba(199, 158, 77, 0.18), transparent 26%), radial-gradient(circle at 86% 18%, rgba(139, 108, 64, 0.14), transparent 26%)",
+    cardFrom: "#453421",
+    cardTo: "#201913",
+    ink: "#f0e3c5",
+    muted: "#cdbd9b",
+    accent: "#e4c17d",
+    items: [
       {
-        label: "Single-Molecule-Tracking-Analysis",
+        badge: "Repo",
+        meta: "Scientific tooling",
+        title: "CellRaQ",
+        href: "https://github.com/PabloAu/CellRaQ",
+        featured: true
+      },
+      {
+        badge: "Repo",
+        meta: "Tracking analysis",
+        title: "Single-Molecule-Tracking-Analysis",
         href: "https://github.com/PabloAu/Single-Molecule-Tracking-Analysis"
+      },
+      {
+        badge: "Repo",
+        meta: "Chromatin mobility",
+        title: "Two-Parameter-SMT",
+        href: "https://github.com/PabloAu/Two-Parameter-SMT"
+      },
+      {
+        badge: "Tool",
+        meta: "Portfolio software",
+        title: "SlowballTracker",
+        href: "#slowball"
       }
-    ],
-    tint: "#e6decd"
+    ]
   },
   {
     id: "apps",
     label: "Apps",
-    title: "Personal Lab and Capital Lab as living tools.",
-    summary:
-      "The apps should feel less like demos and more like private rooms for decisions, memory, research, and long-horizon thinking.",
-    body:
-      "This branch is where the site can eventually open into interactive systems. For now it should already suggest a product language with restraint and intent.",
-    highlights: [
-      "Personal Lab for thought, memory, and operating principles",
-      "Capital Lab for portfolio research and allocation work",
-      "A cleaner interface language than a conventional dashboard"
-    ],
-    actions: [
-      { label: "Discuss the app direction", href: "#contact" },
-      { label: "Open GitHub context", href: "https://github.com/PabloAu" }
-    ],
-    tint: "#eaded4"
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(239, 228, 222, 1) 0%, rgba(228, 213, 205, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 18% 14%, rgba(181, 144, 121, 0.18), transparent 28%), radial-gradient(circle at 86% 32%, rgba(209, 175, 154, 0.14), transparent 24%)",
+    cardFrom: "#ccb8aa",
+    cardTo: "#efe3da",
+    ink: "#34261c",
+    muted: "#6f5a4f",
+    accent: "#9d7d67",
+    items: [
+      {
+        badge: "App",
+        meta: "Knowledge and decisions",
+        title: "Personal Lab",
+        href: "#contact",
+        featured: true
+      },
+      {
+        badge: "App",
+        meta: "Research and capital",
+        title: "Capital Lab",
+        href: "#contact"
+      },
+      {
+        badge: "Prototype",
+        meta: "Interface language",
+        title: "Decision surfaces",
+        href: "#contact"
+      }
+    ]
   },
   {
     id: "slowball",
     label: "Slowball",
-    title: "Capital, patience, and long-horizon systems.",
-    summary:
-      "Slowball belongs here as a quiet capital branch rather than as a finance page. It should feel deliberate, sparse, and patient.",
-    body:
-      "The project connects philosophy, tracking tools, essays, and the more practical side of capital allocation without losing its tone.",
-    highlights: [
-      "Slowball as philosophy and method",
-      "Tracker work and portfolio software",
-      "A bridge between writing, systems, and capital"
-    ],
-    actions: [
-      { label: "Visit Slowball", href: "https://slowball.ch" },
-      { label: "Write about capital systems", href: "#contact" }
-    ],
-    tint: "#e2d4ba"
+    linkLabel: "slowball.ch",
+    linkHref: "https://slowball.ch",
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(58, 49, 31, 1) 0%, rgba(34, 29, 20, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 16% 18%, rgba(191, 153, 73, 0.18), transparent 26%), radial-gradient(circle at 82% 20%, rgba(114, 96, 58, 0.18), transparent 28%)",
+    cardFrom: "#6f5a31",
+    cardTo: "#2a2318",
+    ink: "#f2e5c9",
+    muted: "#cfbf9f",
+    accent: "#d5b067",
+    items: [
+      {
+        badge: "Site",
+        meta: "Project",
+        title: "slowball.ch",
+        href: "https://slowball.ch",
+        featured: true
+      },
+      {
+        badge: "Tool",
+        meta: "Tracking",
+        title: "SlowballTracker",
+        href: "#software"
+      },
+      {
+        badge: "Notes",
+        meta: "Capital and patience",
+        title: "Slow capital writing",
+        href: "#writing"
+      }
+    ]
   },
   {
     id: "writing",
     label: "Writing",
-    title: "Novels, essays, short stories, and authored work.",
-    summary:
-      "This is the literary room: La Bacanora, shorter fiction, essays, and any future publication track that should not be hidden under the technical work.",
-    body:
-      "The tone here should be calmer and more spacious. It is where your written voice can stand on its own rather than living as an appendix to the rest.",
-    highlights: [
-      "La Bacanora as a featured novel project",
-      "A home for short fiction and reflective essays",
-      "Room for publication notes and excerpts later on"
-    ],
-    actions: [
-      { label: "Reserve space for La Bacanora", href: "#contact" },
-      { label: "Open the reading shelf", href: "#marginalia" }
-    ],
-    tint: "#eadcda"
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(238, 228, 229, 1) 0%, rgba(223, 209, 210, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 12% 14%, rgba(183, 127, 121, 0.18), transparent 26%), radial-gradient(circle at 84% 24%, rgba(167, 138, 132, 0.14), transparent 24%)",
+    cardFrom: "#cbb6b3",
+    cardTo: "#efe5e4",
+    ink: "#34221e",
+    muted: "#6d5550",
+    accent: "#a07770",
+    items: [
+      {
+        badge: "Novel",
+        meta: "Featured work",
+        title: "La Bacanora",
+        href: "#contact",
+        featured: true
+      },
+      {
+        badge: "Fiction",
+        meta: "Short stories",
+        title: "Short fiction",
+        href: "#contact"
+      },
+      {
+        badge: "Essay",
+        meta: "Articles and notes",
+        title: "Essays",
+        href: "#contact"
+      },
+      {
+        badge: "Essays",
+        meta: "Publication space",
+        title: "Articles",
+        href: "#contact"
+      }
+    ]
+  },
+  {
+    id: "library",
+    label: "Library",
+    layout: "portrait",
+    background:
+      "linear-gradient(180deg, rgba(24, 20, 17, 1) 0%, rgba(15, 13, 11, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 14% 10%, rgba(171, 132, 66, 0.18), transparent 24%), radial-gradient(circle at 84% 18%, rgba(88, 74, 51, 0.22), transparent 28%)",
+    cardFrom: "#604833",
+    cardTo: "#221a14",
+    ink: "#f4e7cb",
+    muted: "#d4c3a1",
+    accent: "#e2bf76",
+    items: [
+      {
+        badge: "Book",
+        meta: "Santiago Ramon y Cajal",
+        title: "Advice for a Young Investigator",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "D'Arcy Wentworth Thompson",
+        title: "On Growth and Form",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "Thomas S. Kuhn",
+        title: "The Structure of Scientific Revolutions",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "Douglas Hofstadter",
+        title: "Godel, Escher, Bach",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "David Deutsch",
+        title: "The Beginning of Infinity",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "Charlie Munger",
+        title: "Poor Charlie's Almanack",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "Jorge Luis Borges",
+        title: "Ficciones",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "Roberto Bolano",
+        title: "The Savage Detectives",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "W. G. Sebald",
+        title: "The Rings of Saturn",
+        href: "#library"
+      },
+      {
+        badge: "Book",
+        meta: "Primo Levi",
+        title: "The Periodic Table",
+        href: "#library"
+      }
+    ]
   },
   {
     id: "consulting",
     label: "Consulting",
-    title: "Technical diligence and structured analytical support.",
-    summary:
-      "The consulting branch should feel trustworthy and exact: science, software, methods, and careful technical judgment.",
-    body:
-      "This is the place for diligence work, review, and synthesis. It should communicate rigor and usefulness without sounding like generic advisory language.",
-    highlights: [
-      "Scientific and technical review",
-      "Software and product diligence",
-      "Decision support with a careful evidentiary style"
-    ],
-    actions: [
-      { label: "Start a conversation", href: "#contact" },
-      { label: "Download the short CV", href: "/documents/pablo-aurelio-resume.pdf" }
-    ],
-    tint: "#e4e0d3"
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(236, 232, 224, 1) 0%, rgba(219, 214, 205, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 16% 12%, rgba(160, 152, 133, 0.16), transparent 24%), radial-gradient(circle at 86% 18%, rgba(130, 122, 106, 0.16), transparent 28%)",
+    cardFrom: "#c9c1b4",
+    cardTo: "#ede7dc",
+    ink: "#30261f",
+    muted: "#66594d",
+    accent: "#86745f",
+    items: [
+      {
+        badge: "Work",
+        meta: "Technical review",
+        title: "Technical diligence",
+        href: "#contact",
+        featured: true
+      },
+      {
+        badge: "Work",
+        meta: "Scientific assessment",
+        title: "Research review",
+        href: "#contact"
+      },
+      {
+        badge: "Work",
+        meta: "Product and systems",
+        title: "Product evaluation",
+        href: "#contact"
+      },
+      {
+        badge: "Work",
+        meta: "Imaging and data",
+        title: "Workflow analysis",
+        href: "#contact"
+      }
+    ]
   }
-];
-
-export const resumePoints: string[] = [
-  "Research spanning microscopy, biophysics, quantitative analysis, and experimental design.",
-  "Software work across scientific tooling, decision systems, and product direction.",
-  "Writing across fiction, essays, and scientific communication.",
-  "Analytical consulting for technical diligence, product evaluation, and structured judgment."
 ];
 
 export const contactLinks: ContactLink[] = [
@@ -248,135 +451,12 @@ export const contactLinks: ContactLink[] = [
   },
   {
     label: "Scholar",
-    value: "Google Scholar profile",
+    value: "Google Scholar",
     href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
   },
   {
     label: "Slowball",
     value: "slowball.ch",
     href: "https://slowball.ch"
-  }
-];
-
-export const readingRoom: ReadingEntry[] = [
-  {
-    title: "Advice for a Young Investigator",
-    creator: "Santiago Ramon y Cajal",
-    kind: "Science",
-    href: "#marginalia"
-  },
-  {
-    title: "On Growth and Form",
-    creator: "D'Arcy Wentworth Thompson",
-    kind: "Science",
-    href: "#marginalia"
-  },
-  {
-    title: "The Structure of Scientific Revolutions",
-    creator: "Thomas S. Kuhn",
-    kind: "Essay",
-    href: "#marginalia"
-  },
-  {
-    title: "The Double Helix",
-    creator: "James D. Watson",
-    kind: "Science",
-    href: "#marginalia"
-  },
-  {
-    title: "Godel, Escher, Bach",
-    creator: "Douglas Hofstadter",
-    kind: "Essay",
-    href: "#marginalia"
-  },
-  {
-    title: "The Beginning of Infinity",
-    creator: "David Deutsch",
-    kind: "Essay",
-    href: "#marginalia"
-  },
-  {
-    title: "Poor Charlie's Almanack",
-    creator: "Charlie Munger",
-    kind: "Capital",
-    href: "#marginalia"
-  },
-  {
-    title: "The Intelligent Investor",
-    creator: "Benjamin Graham",
-    kind: "Capital",
-    href: "#marginalia"
-  },
-  {
-    title: "The Black Swan",
-    creator: "Nassim Nicholas Taleb",
-    kind: "Capital",
-    href: "#marginalia"
-  },
-  {
-    title: "Ficciones",
-    creator: "Jorge Luis Borges",
-    kind: "Literature",
-    href: "#marginalia"
-  },
-  {
-    title: "The Savage Detectives",
-    creator: "Roberto Bolano",
-    kind: "Literature",
-    href: "#marginalia"
-  },
-  {
-    title: "Invisible Cities",
-    creator: "Italo Calvino",
-    kind: "Literature",
-    href: "#marginalia"
-  },
-  {
-    title: "Essays",
-    creator: "Michel de Montaigne",
-    kind: "Essay",
-    href: "#marginalia"
-  },
-  {
-    title: "The Rings of Saturn",
-    creator: "W. G. Sebald",
-    kind: "Literature",
-    href: "#marginalia"
-  },
-  {
-    title: "The Periodic Table",
-    creator: "Primo Levi",
-    kind: "Literature",
-    href: "#marginalia"
-  },
-  {
-    title: "Lab Girl",
-    creator: "Hope Jahren",
-    kind: "Science",
-    href: "#marginalia"
-  },
-  {
-    title: "Meditations",
-    creator: "Marcus Aurelius",
-    kind: "Essay",
-    href: "#marginalia"
-  },
-  {
-    title: "The Craft of Research",
-    creator: "Wayne C. Booth, Gregory G. Colomb, and Joseph M. Williams",
-    kind: "Essay",
-    href: "#marginalia"
-  },
-  {
-    title: "The Selfish Gene",
-    creator: "Richard Dawkins",
-    kind: "Science",
-    href: "#marginalia"
-  },
-  {
-    title: "Mimesis",
-    creator: "Erich Auerbach",
-    kind: "Literature",
-    href: "#marginalia"
   }
 ];

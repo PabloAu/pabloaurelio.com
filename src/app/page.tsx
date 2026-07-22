@@ -3,20 +3,23 @@ import Image from "next/image";
 import { ContactForm } from "@/app/ContactForm";
 import {
   contactLinks,
+  gallerySections,
   heroMarkers,
-  practiceSections,
-  readingRoom,
-  resumePoints,
+  sectionNavLinks,
   topLinks
 } from "@/data/site-content";
 
-const shelfTones = [
-  "var(--cover-tone-1)",
-  "var(--cover-tone-2)",
-  "var(--cover-tone-3)",
-  "var(--cover-tone-4)",
-  "var(--cover-tone-5)"
-];
+function buildSectionStyles(section: (typeof gallerySections)[number]) {
+  return {
+    "--section-bg": section.background,
+    "--section-overlay": section.overlay,
+    "--section-card-from": section.cardFrom,
+    "--section-card-to": section.cardTo,
+    "--section-ink": section.ink,
+    "--section-muted": section.muted,
+    "--section-accent": section.accent
+  } as CSSProperties;
+}
 
 export default function HomePage() {
   return (
@@ -79,129 +82,69 @@ export default function HomePage() {
         </div>
       </section>
 
+      <nav className="scroll-nav" aria-label="Section navigation">
+        <div className="scroll-nav-inner">
+          {sectionNavLinks.map((link) => (
+            <a key={link.label} href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
       <section className="study-shell">
-        {practiceSections.map((section) => (
-          <article
-            className="practice-section"
+        {gallerySections.map((section) => (
+          <section
+            className="showcase-section"
             id={section.id}
             key={section.id}
-            style={
-              {
-                "--section-tint": section.tint
-              } as CSSProperties
-            }
+            style={buildSectionStyles(section)}
           >
-            <div className="practice-heading">
-              <p className="eyebrow">{section.label}</p>
-              <h2>{section.title}</h2>
-            </div>
+            <div className="showcase-inner">
+              <div className="section-head">
+                <h2>{section.label}</h2>
+                {section.linkHref && section.linkLabel ? (
+                  <a className="section-link" href={section.linkHref}>
+                    {section.linkLabel}
+                  </a>
+                ) : null}
+              </div>
 
-            <div className="practice-body">
-              <p className="practice-summary">{section.summary}</p>
-              <p className="practice-text">{section.body}</p>
-
-              <ul className="practice-highlights">
-                {section.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-
-              <div className="practice-actions">
-                {section.actions.map((action) => (
-                  <a className="section-action" href={action.href} key={action.label}>
-                    {action.label}
+              <div className={`item-grid item-grid-${section.layout}`}>
+                {section.items.map((item) => (
+                  <a
+                    className={`item-card${item.featured ? " is-featured" : ""}`}
+                    href={item.href}
+                    key={`${section.id}-${item.title}`}
+                  >
+                    <div className="item-figure">
+                      <span className="item-badge">{item.badge}</span>
+                    </div>
+                    <p className="item-meta">{item.meta}</p>
+                    <h3>{item.title}</h3>
+                    {item.note ? <p className="item-note">{item.note}</p> : null}
                   </a>
                 ))}
               </div>
             </div>
-          </article>
+          </section>
         ))}
 
-        <article className="reading-section" id="marginalia">
-          <div className="section-intro">
-            <p className="eyebrow">Marginalia</p>
-            <h2>A shelf for books, essays, papers, and old companions.</h2>
-            <p>
-              This stays visual and quiet. It can later become a more personal
-              archive, but it already reads like a room with references rather
-              than a list of links.
-            </p>
-          </div>
-
-          <div className="reading-grid">
-            {readingRoom.map((entry, index) => (
-              <a
-                className="reading-card"
-                href={entry.href}
-                key={`${entry.title}-${entry.kind}`}
-                style={
-                  {
-                    "--cover-tone": shelfTones[index % shelfTones.length]
-                  } as CSSProperties
-                }
-              >
-                <div className="reading-cover">
-                  <p>{entry.kind}</p>
-                  <h3>{entry.title}</h3>
-                </div>
-                <span>{entry.creator}</span>
-              </a>
-            ))}
-          </div>
-        </article>
-
-        <article className="resume-section" id="resume">
-          <div className="section-intro">
-            <p className="eyebrow">CV</p>
-            <h2>A short public record and a longer academic version.</h2>
-            <p>
-              The site can stay selective while the formal documents carry the
-              full chronology.
-            </p>
-          </div>
-
-          <ul className="resume-list">
-            {resumePoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-
-          <div className="hero-actions">
-            <a className="button button-primary" href="/documents/pablo-aurelio-resume.pdf">
-              Download short resume
-            </a>
-            <a
-              className="button button-secondary"
-              href="/documents/pablo-aurelio-academic-cv-2026.pdf"
-            >
-              Download academic CV
-            </a>
-          </div>
-        </article>
-
         <section className="contact-section" id="contact">
-          <div className="contact-copy">
-            <div className="section-intro contact-intro">
-              <p className="eyebrow">Contact</p>
-              <h2>For collaborations, software, writing, diligence, or research.</h2>
-              <p>
-                This section stays simple. The rest of the page can be more
-                atmospheric, but reaching you should remain direct.
-              </p>
+          <div className="contact-inner">
+            <div className="contact-copy">
+              <h2>Contact</h2>
+
+              <div className="contact-links">
+                {contactLinks.map((link) => (
+                  <a className="contact-link" href={link.href} key={link.label}>
+                    <span>{link.label}</span>
+                    <strong>{link.value}</strong>
+                  </a>
+                ))}
+              </div>
             </div>
 
-            <div className="contact-links">
-              {contactLinks.map((link) => (
-                <a className="contact-link" href={link.href} key={link.label}>
-                  <span>{link.label}</span>
-                  <strong>{link.value}</strong>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="contact-form-shell">
-            <p className="eyebrow">Write directly</p>
             <ContactForm />
           </div>
         </section>
@@ -209,7 +152,7 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <p>Pablo Aurelio Gomez Garcia</p>
-        <p>A vintage study for science, software, writing, and patient systems.</p>
+        <p>Science, software, writing, capital, and quiet systems.</p>
       </footer>
     </main>
   );
