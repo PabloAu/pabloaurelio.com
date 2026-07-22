@@ -49,25 +49,6 @@ export default function HomePage() {
             </nav>
           </header>
 
-          <div className="hero-copy">
-            <p className="eyebrow">Pablo Aurelio Gomez Garcia</p>
-            <h1>Science, software, literature, and patient systems.</h1>
-            <p className="hero-summary">
-              The books open the archive. The microscope opens the scientific
-              branch. The rest of the study opens the software, apps, writing,
-              consulting, and capital work.
-            </p>
-
-            <div className="hero-actions">
-              <a className="button button-primary" href="#research">
-                Enter the study
-              </a>
-              <a className="button button-secondary" href="#contact">
-                Write to Pablo
-              </a>
-            </div>
-          </div>
-
           <div className="hero-pins" aria-label="Section markers">
             {heroMarkers.map((marker) => (
               <a
@@ -82,10 +63,18 @@ export default function HomePage() {
                   } as CSSProperties
                 }
               >
-                <span>{marker.detail}</span>
-                <strong>{marker.label}</strong>
+                {marker.label}
               </a>
             ))}
+          </div>
+
+          <div className="hero-dock">
+            <a className="button button-primary" href="#research">
+              Enter the study
+            </a>
+            <a className="button button-secondary" href="#contact">
+              Write to Pablo
+            </a>
           </div>
         </div>
       </section>

@@ -11,7 +11,6 @@ export type ContactLink = {
 
 export type HeroMarker = {
   label: string;
-  detail: string;
   href: string;
   x: number;
   y: number;
@@ -54,7 +53,6 @@ export const topLinks: SectionLink[] = [
 export const heroMarkers: HeroMarker[] = [
   {
     label: "Software",
-    detail: "Old computer",
     href: "#software",
     x: 12,
     y: 31,
@@ -62,7 +60,6 @@ export const heroMarkers: HeroMarker[] = [
   },
   {
     label: "Marginalia",
-    detail: "Library",
     href: "#marginalia",
     x: 50,
     y: 17,
@@ -70,7 +67,6 @@ export const heroMarkers: HeroMarker[] = [
   },
   {
     label: "Research",
-    detail: "Microscope",
     href: "#research",
     x: 40,
     y: 43,
@@ -78,7 +74,6 @@ export const heroMarkers: HeroMarker[] = [
   },
   {
     label: "Apps",
-    detail: "Instrument case",
     href: "#apps",
     x: 26,
     y: 48,
@@ -86,7 +81,6 @@ export const heroMarkers: HeroMarker[] = [
   },
   {
     label: "Consulting",
-    detail: "The study",
     href: "#consulting",
     x: 78,
     y: 34,
@@ -94,7 +88,6 @@ export const heroMarkers: HeroMarker[] = [
   },
   {
     label: "Writing",
-    detail: "Volumes",
     href: "#writing",
     x: 76,
     y: 16,
@@ -102,7 +95,6 @@ export const heroMarkers: HeroMarker[] = [
   },
   {
     label: "Slowball",
-    detail: "Side table",
     href: "#slowball",
     x: 89,
     y: 78,
@@ -134,7 +126,7 @@ export const practiceSections: PracticeSection[] = [
         href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6895258/"
       }
     ],
-    tint: "rgba(140, 126, 87, 0.2)"
+    tint: "#efe9d9"
   },
   {
     id: "software",
@@ -156,7 +148,7 @@ export const practiceSections: PracticeSection[] = [
         href: "https://github.com/PabloAu/Single-Molecule-Tracking-Analysis"
       }
     ],
-    tint: "rgba(111, 103, 84, 0.18)"
+    tint: "#e6decd"
   },
   {
     id: "apps",
@@ -175,7 +167,7 @@ export const practiceSections: PracticeSection[] = [
       { label: "Discuss the app direction", href: "#contact" },
       { label: "Open GitHub context", href: "https://github.com/PabloAu" }
     ],
-    tint: "rgba(145, 109, 84, 0.18)"
+    tint: "#eaded4"
   },
   {
     id: "slowball",
@@ -191,10 +183,10 @@ export const practiceSections: PracticeSection[] = [
       "A bridge between writing, systems, and capital"
     ],
     actions: [
-      { label: "Visit Slowball", href: "https://slowball.ch/man" },
+      { label: "Visit Slowball", href: "https://slowball.ch" },
       { label: "Write about capital systems", href: "#contact" }
     ],
-    tint: "rgba(159, 126, 62, 0.2)"
+    tint: "#e2d4ba"
   },
   {
     id: "writing",
@@ -213,7 +205,7 @@ export const practiceSections: PracticeSection[] = [
       { label: "Reserve space for La Bacanora", href: "#contact" },
       { label: "Open the reading shelf", href: "#marginalia" }
     ],
-    tint: "rgba(128, 92, 87, 0.18)"
+    tint: "#eadcda"
   },
   {
     id: "consulting",
@@ -232,7 +224,7 @@ export const practiceSections: PracticeSection[] = [
       { label: "Start a conversation", href: "#contact" },
       { label: "Download the short CV", href: "/documents/pablo-aurelio-resume.pdf" }
     ],
-    tint: "rgba(107, 100, 81, 0.18)"
+    tint: "#e4e0d3"
   }
 ];
 
@@ -261,8 +253,8 @@ export const contactLinks: ContactLink[] = [
   },
   {
     label: "Slowball",
-    value: "slowball.ch/man",
-    href: "https://slowball.ch/man"
+    value: "slowball.ch",
+    href: "https://slowball.ch"
   }
 ];
 
