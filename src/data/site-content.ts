@@ -12,6 +12,7 @@ export type GalleryItem = {
   imageAlt?: string;
   imageFit?: "cover" | "contain";
   note?: string;
+  themes?: string[];
 };
 
 export type GallerySection = {
@@ -76,9 +77,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "The environmental stress response regulates biophysics of the cytoplasm and survival in quiescence",
         href: "https://rupress.org/jcb/article/225/6/e202601119/281838/The-environmental-stress-response-regulates",
-        imageSrc: "/images/research/jcb-cover.png",
-        imageAlt: "Journal of Cell Biology cover",
-        imageFit: "contain"
+        note:
+          "Shows how the environmental stress response reorganizes cytoplasmic material properties to protect cells in quiescence.",
+        themes: ["Stress response", "Cytoplasm", "Quiescence"]
       },
       {
         badge: "2025",
@@ -86,9 +87,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "Timing of transcription controls the selective translation of newly synthesized mRNAs during acute environmental stress",
         href: "https://www.sciencedirect.com/science/article/pii/S1097276525009001",
-        imageSrc: "/images/research/molecular-cell-cover.jpg",
-        imageAlt: "Molecular Cell cover",
-        imageFit: "contain"
+        note:
+          "Connects transcription timing with selective translation during acute stress to explain how cells prioritize new gene expression.",
+        themes: ["Stress response", "Translation", "Gene regulation"]
       },
       {
         badge: "2025",
@@ -96,9 +97,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "Polysomes and mRNA control the biophysical properties of the eukaryotic cytoplasm",
         href: "https://doi.org/10.1016/j.celrep.2025.116204",
-        imageSrc: "/images/research/cell-reports-cover.jpg",
-        imageAlt: "Cell Reports cover",
-        imageFit: "contain"
+        note:
+          "Demonstrates that ribosome-loaded mRNA is a major determinant of the physical behavior of the eukaryotic cytoplasm.",
+        themes: ["Cytoplasm", "Translation", "Biophysics"]
       },
       {
         badge: "2021",
@@ -106,9 +107,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "Cell cycle entry is controlled by the translational reprogramming of quiescent G0 cells",
         href: "https://doi.org/10.1016/j.celrep.2020.108614",
-        imageSrc: "/images/research/cell-reports-cover.jpg",
-        imageAlt: "Cell Reports cover",
-        imageFit: "contain"
+        note:
+          "Explains how dormant cells re-enter the cycle by reshaping translation before large-scale transcriptional changes take over.",
+        themes: ["Quiescence", "Translation", "Cell cycle"]
       },
       {
         badge: "2020",
@@ -116,9 +117,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "Single-nucleosome imaging reveals control of parental histone recycling by free histones during DNA replication",
         href: "https://doi.org/10.1016/j.molcel.2020.05.036",
-        imageSrc: "/images/research/molecular-cell-cover.jpg",
-        imageAlt: "Molecular Cell cover",
-        imageFit: "contain"
+        note:
+          "Uses single-nucleosome imaging to show how free histones modulate parental histone recycling at the replication fork.",
+        themes: ["Chromatin", "DNA replication", "Imaging"]
       },
       {
         badge: "2019",
@@ -126,9 +127,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "Super-resolution microscopy reveals how histone tail acetylation affects DNA compaction within nucleosomes in vivo",
         href: "https://doi.org/10.1093/nar/gkz593",
-        imageSrc: "/images/research/nar-cover-fallback.svg",
-        imageAlt: "Nucleic Acids Research cover-inspired artwork",
-        imageFit: "contain"
+        note:
+          "Measures how histone acetylation changes nucleosomal DNA compaction directly inside living cells with super-resolution microscopy.",
+        themes: ["Chromatin", "Imaging", "Epigenetics"]
       },
       {
         badge: "2018",
@@ -136,9 +137,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "DNA compaction and repositioning induced by the formation of the 30-nm chromatin fiber",
         href: "https://doi.org/10.1073/pnas.1804725115",
-        imageSrc: "/images/research/pnas-cover.jpg",
-        imageAlt: "Proceedings of the National Academy of Sciences cover",
-        imageFit: "contain"
+        note:
+          "Shows how higher-order chromatin fiber formation reshapes both DNA compaction and the spatial positioning of nucleosomal regions.",
+        themes: ["Chromatin", "Biophysics", "Imaging"]
       },
       {
         badge: "2018",
@@ -146,9 +147,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "PoSTAC: a tool for the analysis of DNA compaction by super-resolution microscopy",
         href: "https://doi.org/10.1093/nar/gkx1271",
-        imageSrc: "/images/research/nar-cover-fallback.svg",
-        imageAlt: "Nucleic Acids Research cover-inspired artwork",
-        imageFit: "contain"
+        note:
+          "Introduces a quantitative analysis tool for measuring DNA compaction from super-resolution microscopy data.",
+        themes: ["Methods", "Imaging", "Software"]
       },
       {
         badge: "2017",
@@ -156,9 +157,9 @@ export const gallerySections: GallerySection[] = [
         title:
           "Photophysical and photobiological properties of the redaporfin photosensitizer",
         href: "https://doi.org/10.1016/j.pdpdt.2017.04.012",
-        imageSrc: "/images/research/pdpdt-cover-fallback.svg",
-        imageAlt: "Photodiagnosis and Photodynamic Therapy cover-inspired artwork",
-        imageFit: "contain"
+        note:
+          "Characterizes the light-driven and biological behavior of redaporfin to support its use in photodynamic therapy.",
+        themes: ["Photophysics", "Methods", "Biophysics"]
       }
     ]
   },

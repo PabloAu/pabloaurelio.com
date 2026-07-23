@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { ContactForm } from "@/app/ContactForm";
+import { ResearchSection } from "@/app/ResearchSection";
 import { SectionNav } from "@/app/SectionNav";
 import {
   contactLinks,
@@ -355,7 +356,9 @@ export default function HomePage() {
                 ) : null}
               </div>
 
-              {section.id === "slowball" ? (
+              {section.id === "research" ? (
+                <ResearchSection section={section} />
+              ) : section.id === "slowball" ? (
                 <div className="slowball-feature">
                   <div className="slowball-copy">
                     <p className="slowball-kicker">Investing education</p>
