@@ -2,10 +2,14 @@
 
 import type { CSSProperties } from "react";
 import { useMemo, useState } from "react";
+import { getThemeLabel, type Language } from "@/data/localized-content";
 import type { GallerySection } from "@/data/site-content";
 
 type ResearchSectionProps = {
   section: GallerySection;
+  intro: string;
+  language: Language;
+  themesAriaLabel: string;
 };
 
 const THEME_ORDER = [
@@ -58,7 +62,12 @@ function getThemeList(section: GallerySection) {
   return THEME_ORDER.filter((theme) => theme === "All" || themeSet.has(theme));
 }
 
-export function ResearchSection({ section }: ResearchSectionProps) {
+export function ResearchSection({
+  section,
+  intro,
+  language,
+  themesAriaLabel
+}: ResearchSectionProps) {
   const [activeTheme, setActiveTheme] = useState("All");
   const themes = useMemo(() => getThemeList(section), [section]);
 
@@ -73,13 +82,9 @@ export function ResearchSection({ section }: ResearchSectionProps) {
   return (
     <div className="research-panel">
       <div className="research-intro">
-        <p>
-          Fourteen peer-reviewed journal papers across chromatin dynamics,
-          genome regulation, stem cells, microscopy, stress biology, and the
-          biophysics of living matter.
-        </p>
+        <p>{intro}</p>
 
-        <div className="research-filters" role="tablist" aria-label="Research themes">
+        <div className="research-filters" role="tablist" aria-label={themesAriaLabel}>
           {themes.map((theme) => (
             <button
               className={`research-filter${activeTheme === theme ? " is-active" : ""}`}
@@ -87,7 +92,7 @@ export function ResearchSection({ section }: ResearchSectionProps) {
               onClick={() => setActiveTheme(theme)}
               type="button"
             >
-              {theme}
+              {getThemeLabel(language, theme)}
             </button>
           ))}
         </div>
@@ -129,7 +134,7 @@ export function ResearchSection({ section }: ResearchSectionProps) {
                 <div className="research-tags">
                   {item.themes.map((theme) => (
                     <span className="research-tag" key={`${item.title}-${theme}`}>
-                      {theme}
+                      {getThemeLabel(language, theme)}
                     </span>
                   ))}
                 </div>

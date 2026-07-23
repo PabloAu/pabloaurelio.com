@@ -2,10 +2,15 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import type { ContactFormCopy } from "@/data/localized-content";
 
 const CONTACT_EMAIL = "pablo.gomez@icfo.eu";
 
-export function ContactForm() {
+type ContactFormProps = {
+  copy: ContactFormCopy;
+};
+
+export function ContactForm({ copy }: ContactFormProps) {
   const [backupLink, setBackupLink] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -36,42 +41,49 @@ export function ContactForm() {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="form-field">
-        <label htmlFor="name">Name</label>
-        <input id="name" name="name" type="text" placeholder="Your name" required />
+        <label htmlFor="name">{copy.nameLabel}</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder={copy.namePlaceholder}
+          required
+        />
       </div>
 
       <div className="form-field">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{copy.emailLabel}</label>
         <input
           id="email"
           name="email"
           type="email"
-          placeholder="Where should Pablo reply?"
+          placeholder={copy.emailPlaceholder}
           required
         />
       </div>
 
       <div className="form-field form-field-wide">
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message">{copy.messageLabel}</label>
         <textarea
           id="message"
           name="message"
           rows={4}
-          placeholder="Write me."
+          placeholder={copy.messagePlaceholder}
           required
         />
       </div>
 
       <div className="form-actions">
         <button className="button button-primary" type="submit">
-          Open draft
+          {copy.submitLabel}
         </button>
       </div>
 
       {backupLink ? (
         <p className="form-backup">
-          If your mail app did not open, use the{" "}
-          <a href={backupLink}>backup draft link</a>.
+          {copy.backupPrefix}
+          <a href={backupLink}>{copy.backupLinkLabel}</a>
+          {copy.backupSuffix}
         </p>
       ) : null}
     </form>

@@ -1,16 +1,26 @@
+"use client";
+
 import type { CSSProperties } from "react";
+import { useEffect, useMemo, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { ContactForm } from "@/app/ContactForm";
+import { LanguageToggle } from "@/app/LanguageToggle";
 import { ResearchSection } from "@/app/ResearchSection";
 import { SectionNav } from "@/app/SectionNav";
 import {
-  contactLinks,
-  gallerySections,
-  heroQuote,
-  sectionNavLinks
-} from "@/data/site-content";
+  getHeroQuote,
+  getInterfaceCopy,
+  getLocalizedContactLinks,
+  getLocalizedGallerySections,
+  getLocalizedSectionNavLinks,
+  type Language
+} from "@/data/localized-content";
+import type { GalleryItem, GallerySection } from "@/data/site-content";
 
-function buildSectionStyles(section: (typeof gallerySections)[number]) {
+const LANGUAGE_STORAGE_KEY = "pabloaurelio-language";
+const LANGUAGE_EVENT = "pabloaurelio-language-change";
+
+function buildSectionStyles(section: GallerySection) {
   return {
     "--section-bg": section.background,
     "--section-overlay": section.overlay,
@@ -20,6 +30,39 @@ function buildSectionStyles(section: (typeof gallerySections)[number]) {
     "--section-muted": section.muted,
     "--section-accent": section.accent
   } as CSSProperties;
+}
+
+function getPreferredLanguage(): Language {
+  if (typeof window === "undefined") {
+    return "en";
+  }
+
+  const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+  if (storedLanguage === "en" || storedLanguage === "es") {
+    return storedLanguage;
+  }
+
+  return window.navigator.language.toLowerCase().startsWith("es") ? "es" : "en";
+}
+
+function subscribeToLanguage(callback: () => void) {
+  if (typeof window === "undefined") {
+    return () => undefined;
+  }
+
+  window.addEventListener("storage", callback);
+  window.addEventListener(LANGUAGE_EVENT, callback);
+
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(LANGUAGE_EVENT, callback);
+  };
+}
+
+function updatePreferredLanguage(language: Language) {
+  window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+  window.dispatchEvent(new Event(LANGUAGE_EVENT));
 }
 
 function escapeSvgText(value: string) {
@@ -44,10 +87,7 @@ function buildAnchorProps(href: string) {
     : {};
 }
 
-function buildGenericCardArtwork(
-  section: (typeof gallerySections)[number],
-  item: (typeof gallerySections)[number]["items"][number]
-) {
+function buildGenericCardArtwork(section: GallerySection, item: GalleryItem) {
   const seed = hashValue(`${section.id}-${item.title}`);
   const shiftA = 18 + (seed % 62);
   const shiftB = 28 + (Math.floor(seed / 5) % 84);
@@ -125,10 +165,7 @@ function buildGenericCardArtwork(
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
-function buildSoftwareArtwork(
-  section: (typeof gallerySections)[number],
-  item: (typeof gallerySections)[number]["items"][number]
-) {
+function buildSoftwareArtwork(section: GallerySection, item: GalleryItem) {
   const title = item.title;
   const accent = section.accent;
   const ink = section.ink;
@@ -240,10 +277,7 @@ function buildSoftwareArtwork(
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
-function getItemArtwork(
-  section: (typeof gallerySections)[number],
-  item: (typeof gallerySections)[number]["items"][number]
-) {
+function getItemArtwork(section: GallerySection, item: GalleryItem) {
   if (item.imageSrc) {
     return {
       src: item.imageSrc,
@@ -271,6 +305,31 @@ function getItemArtwork(
 }
 
 export default function HomePage() {
+  const language = useSyncExternalStore<Language>(
+    subscribeToLanguage,
+    getPreferredLanguage,
+    () => "en"
+  );
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  const copy = useMemo(() => getInterfaceCopy(language), [language]);
+  const heroQuote = useMemo(() => getHeroQuote(language), [language]);
+  const sectionNavLinks = useMemo(
+    () => getLocalizedSectionNavLinks(language),
+    [language]
+  );
+  const gallerySections = useMemo(
+    () => getLocalizedGallerySections(language),
+    [language]
+  );
+  const contactLinks = useMemo(
+    () => getLocalizedContactLinks(language),
+    [language]
+  );
+
   return (
     <main className="page-shell">
       <section className="hero-shell" id="top">
@@ -278,7 +337,7 @@ export default function HomePage() {
           <Image
             className="hero-image"
             src="/images/pablo-hero-cajal-vintage-balanced.png"
-            alt="Pablo Aurelio Gomez Garcia in a vintage study portrait."
+            alt={copy.heroImageAlt}
             fill
             priority
             sizes="100vw"
@@ -292,32 +351,29 @@ export default function HomePage() {
               <a className="site-name" href="#top">
                 pabloaurelio
               </a>
-              <p className="site-summary">
-                I work as a senior scientist at ETH Zurich on imaging,
-                biophysics, and the behavior of living matter. I also write
-                novels, short stories, and essays; build software and decision
-                tools; and spend a good part of my time thinking about capital,
-                technology, and how people manage wealth with more clarity.
-                This page brings those lines of work into one quiet place.
-              </p>
+              <p className="site-summary">{copy.heroSummary}</p>
             </div>
           </header>
 
-          <nav className="hero-pins" aria-label="Hero navigation">
-            {sectionNavLinks.map((link) => (
-              <a
-                className="hero-pin"
-                href={link.href}
-                key={link.label}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          <div className="hero-side">
+            <LanguageToggle
+              ariaLabel={copy.languageSwitchLabel}
+              language={language}
+              onChange={updatePreferredLanguage}
+            />
+
+            <nav className="hero-pins" aria-label={copy.heroNavLabel}>
+              {sectionNavLinks.map((link) => (
+                <a className="hero-pin" href={link.href} key={link.label}>
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
           <div className="hero-dock">
             <a className="hero-link" href="#research">
-              Enter the study
+              {copy.heroCta}
             </a>
           </div>
 
@@ -325,14 +381,20 @@ export default function HomePage() {
             <p>&ldquo;{heroQuote.text}&rdquo;</p>
             <cite>
               <a href={heroQuote.sourceHref} {...buildAnchorProps(heroQuote.sourceHref)}>
-                {heroQuote.attribution}, {heroQuote.sourceLabel}
+                {heroQuote.attribution}
               </a>
             </cite>
           </aside>
         </div>
       </section>
 
-      <SectionNav links={sectionNavLinks} />
+      <SectionNav
+        language={language}
+        languageSwitchLabel={copy.languageSwitchLabel}
+        links={sectionNavLinks}
+        navAriaLabel={copy.sectionNavLabel}
+        onChangeLanguage={updatePreferredLanguage}
+      />
 
       <section className="study-shell">
         {gallerySections.map((section) => (
@@ -357,24 +419,24 @@ export default function HomePage() {
               </div>
 
               {section.id === "research" ? (
-                <ResearchSection section={section} />
+                <ResearchSection
+                  intro={copy.researchIntro}
+                  language={language}
+                  section={section}
+                  themesAriaLabel={copy.researchThemesLabel}
+                />
               ) : section.id === "slowball" ? (
                 <div className="slowball-feature">
                   <div className="slowball-copy">
-                    <p className="slowball-kicker">Investing education</p>
+                    <p className="slowball-kicker">{copy.slowballKicker}</p>
                     <h3>Slowball</h3>
-                    <p>
-                      Slowball is my investing project for patient capital,
-                      financial education, and clearer reasoning under
-                      uncertainty. It is where long-horizon thinking, portfolio
-                      structure, and visual explanation come together.
-                    </p>
+                    <p>{copy.slowballDescription}</p>
                     <a
                       className="slowball-link"
                       href="https://slowball.ch"
                       {...buildAnchorProps("https://slowball.ch")}
                     >
-                      Visit slowball.ch
+                      {copy.slowballLinkLabel}
                     </a>
                   </div>
 
@@ -386,36 +448,22 @@ export default function HomePage() {
                       sizes="(max-width: 900px) 100vw, 48vw"
                     />
                     <p className="slowball-panel-caption">
-                      Compound growth calculator
+                      {copy.slowballPanelCaption}
                     </p>
                   </div>
                 </div>
               ) : section.id === "innovation" ? (
                 <div className="innovation-feature">
                   <div className="innovation-copy">
-                    <p className="innovation-kicker">Patents and advisory</p>
-                    <h3>
-                      Science, imaging, software, and technical judgment
-                      translated into useful decisions.
-                    </h3>
-                    <p>
-                      I work across microscopy, biophysics, instrumentation,
-                      software, and deep-tech evaluation. The same attention to
-                      experimental detail that shapes my scientific work also
-                      informs how I assess technology, product direction, and
-                      technical risk.
-                    </p>
-                    <p>
-                      I help founders, investment teams, and companies think
-                      through scientific claims, R&amp;D paths, imaging systems,
-                      software tools, and whether a technology can become
-                      something robust, useful, and investable.
-                    </p>
+                    <p className="innovation-kicker">{copy.innovationKicker}</p>
+                    <h3>{copy.innovationTitle}</h3>
+                    <p>{copy.innovationParagraphs[0]}</p>
+                    <p>{copy.innovationParagraphs[1]}</p>
                   </div>
 
                   <div className="patent-grid">
                     {section.items
-                      .filter((item) => item.badge === "Patent")
+                      .filter((item) => item.badge === "Patent" || item.badge === "Patente")
                       .map((item) => (
                         <a
                           className="patent-card"
@@ -433,7 +481,7 @@ export default function HomePage() {
 
                   <div className="service-grid">
                     {section.items
-                      .filter((item) => item.badge === "Service")
+                      .filter((item) => item.badge === "Service" || item.badge === "Servicio")
                       .map((item) => (
                         <article className="service-card" key={item.title}>
                           <span className="service-label">{item.badge}</span>
@@ -446,19 +494,9 @@ export default function HomePage() {
               ) : section.id === "teaching" ? (
                 <div className="teaching-feature">
                   <div className="teaching-copy">
-                    <p className="teaching-kicker">
-                      Lectures, practical training, and supervision
-                    </p>
-                    <h3>
-                      Teaching that stays close to the bench, the microscope,
-                      and the question itself.
-                    </h3>
-                    <p>
-                      My teaching moves between concepts, experiments, and
-                      analysis. I enjoy explaining difficult ideas clearly,
-                      connecting methods to first principles, and helping
-                      students develop technical taste as well as confidence.
-                    </p>
+                    <p className="teaching-kicker">{copy.teachingKicker}</p>
+                    <h3>{copy.teachingTitle}</h3>
+                    <p>{copy.teachingDescription}</p>
                   </div>
 
                   <div className="teaching-grid">
@@ -512,7 +550,7 @@ export default function HomePage() {
         <section className="contact-section" id="contact">
           <div className="contact-inner">
             <div className="contact-copy">
-              <h2>Contact</h2>
+              <h2>{copy.contactHeading}</h2>
 
               <div className="contact-links">
                 {contactLinks.map((link) => (
@@ -529,14 +567,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            <ContactForm />
+            <ContactForm copy={copy.contactForm} />
           </div>
         </section>
       </section>
 
       <footer className="site-footer">
         <p>pabloaurelio.com</p>
-        <p>Research, software, literature, investing, innovation, and teaching.</p>
+        <p>{copy.footerText}</p>
       </footer>
     </main>
   );

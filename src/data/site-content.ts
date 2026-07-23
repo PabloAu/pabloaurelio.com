@@ -39,9 +39,9 @@ export type ContactLink = {
 
 export const heroQuote = {
   text:
-    "Science may not yet know the final why of things, but through time it may come closer to the laws that govern matter, life, and thought.",
-  attribution: "Santiago Ramon y Cajal",
-  sourceLabel: "Reglas y consejos sobre investigacion cientifica",
+    "The principal sources of knowledge are observation, experimentation, and inductive and deductive reasoning.",
+  attribution: "Ramón y Cajal",
+  sourceLabel: "Ramón y Cajal",
   sourceHref: "https://gutenberg.org/files/66373/66373-h/66373-h.htm"
 };
 

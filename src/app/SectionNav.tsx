@@ -1,13 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { LanguageToggle } from "@/app/LanguageToggle";
+import type { Language } from "@/data/localized-content";
 import type { SectionLink } from "@/data/site-content";
 
 type SectionNavProps = {
   links: SectionLink[];
+  language: Language;
+  navAriaLabel: string;
+  languageSwitchLabel: string;
+  onChangeLanguage: (language: Language) => void;
 };
 
-export function SectionNav({ links }: SectionNavProps) {
+export function SectionNav({
+  links,
+  language,
+  navAriaLabel,
+  languageSwitchLabel,
+  onChangeLanguage
+}: SectionNavProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -34,19 +46,27 @@ export function SectionNav({ links }: SectionNavProps) {
   return (
     <nav
       className={`scroll-nav${isVisible ? " is-visible" : ""}`}
-      aria-label="Section navigation"
+      aria-label={navAriaLabel}
     >
       <div className="scroll-nav-inner">
         <a className="scroll-nav-brand" href="#top">
           pabloaurelio
         </a>
 
-        <div className="scroll-nav-links">
-          {links.map((link) => (
-            <a key={link.label} href={link.href}>
-              {link.label}
-            </a>
-          ))}
+        <div className="scroll-nav-controls">
+          <div className="scroll-nav-links">
+            {links.map((link) => (
+              <a key={link.label} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <LanguageToggle
+            ariaLabel={languageSwitchLabel}
+            language={language}
+            onChange={onChangeLanguage}
+          />
         </div>
       </div>
     </nav>
