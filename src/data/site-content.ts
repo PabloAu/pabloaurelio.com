@@ -8,6 +8,9 @@ export type GalleryItem = {
   meta: string;
   badge: string;
   href: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageFit?: "cover" | "contain";
   note?: string;
 };
 
@@ -72,63 +75,90 @@ export const gallerySections: GallerySection[] = [
         meta: "Journal of Cell Biology",
         title:
           "The environmental stress response regulates biophysics of the cytoplasm and survival in quiescence",
-        href: "https://rupress.org/jcb/article/225/6/e202601119/281838/The-environmental-stress-response-regulates"
+        href: "https://rupress.org/jcb/article/225/6/e202601119/281838/The-environmental-stress-response-regulates",
+        imageSrc: "/images/research/jcb-cover.png",
+        imageAlt: "Journal of Cell Biology cover",
+        imageFit: "contain"
       },
       {
         badge: "2025",
         meta: "Molecular Cell",
         title:
           "Timing of transcription controls the selective translation of newly synthesized mRNAs during acute environmental stress",
-        href: "https://www.sciencedirect.com/science/article/pii/S1097276525009001"
+        href: "https://www.sciencedirect.com/science/article/pii/S1097276525009001",
+        imageSrc: "/images/research/molecular-cell-cover.jpg",
+        imageAlt: "Molecular Cell cover",
+        imageFit: "contain"
       },
       {
         badge: "2025",
         meta: "Cell Reports",
         title:
           "Polysomes and mRNA control the biophysical properties of the eukaryotic cytoplasm",
-        href: "https://doi.org/10.1016/j.celrep.2025.116204"
+        href: "https://doi.org/10.1016/j.celrep.2025.116204",
+        imageSrc: "/images/research/cell-reports-cover.jpg",
+        imageAlt: "Cell Reports cover",
+        imageFit: "contain"
       },
       {
         badge: "2021",
         meta: "Cell Reports",
         title:
           "Cell cycle entry is controlled by the translational reprogramming of quiescent G0 cells",
-        href: "https://doi.org/10.1016/j.celrep.2020.108614"
+        href: "https://doi.org/10.1016/j.celrep.2020.108614",
+        imageSrc: "/images/research/cell-reports-cover.jpg",
+        imageAlt: "Cell Reports cover",
+        imageFit: "contain"
       },
       {
         badge: "2020",
         meta: "Molecular Cell",
         title:
           "Single-nucleosome imaging reveals control of parental histone recycling by free histones during DNA replication",
-        href: "https://doi.org/10.1016/j.molcel.2020.05.036"
+        href: "https://doi.org/10.1016/j.molcel.2020.05.036",
+        imageSrc: "/images/research/molecular-cell-cover.jpg",
+        imageAlt: "Molecular Cell cover",
+        imageFit: "contain"
       },
       {
         badge: "2019",
         meta: "Nucleic Acids Research",
         title:
           "Super-resolution microscopy reveals how histone tail acetylation affects DNA compaction within nucleosomes in vivo",
-        href: "https://doi.org/10.1093/nar/gkz593"
+        href: "https://doi.org/10.1093/nar/gkz593",
+        imageSrc: "/images/research/nar-cover-fallback.svg",
+        imageAlt: "Nucleic Acids Research cover-inspired artwork",
+        imageFit: "contain"
       },
       {
         badge: "2018",
         meta: "Proceedings of the National Academy of Sciences",
         title:
           "DNA compaction and repositioning induced by the formation of the 30-nm chromatin fiber",
-        href: "https://doi.org/10.1073/pnas.1804725115"
+        href: "https://doi.org/10.1073/pnas.1804725115",
+        imageSrc: "/images/research/pnas-cover.jpg",
+        imageAlt: "Proceedings of the National Academy of Sciences cover",
+        imageFit: "contain"
       },
       {
         badge: "2018",
         meta: "Nucleic Acids Research",
         title:
           "PoSTAC: a tool for the analysis of DNA compaction by super-resolution microscopy",
-        href: "https://doi.org/10.1093/nar/gkx1271"
+        href: "https://doi.org/10.1093/nar/gkx1271",
+        imageSrc: "/images/research/nar-cover-fallback.svg",
+        imageAlt: "Nucleic Acids Research cover-inspired artwork",
+        imageFit: "contain"
       },
       {
         badge: "2017",
         meta: "Photodiagnosis and Photodynamic Therapy",
         title:
           "Photophysical and photobiological properties of the redaporfin photosensitizer",
-        href: "https://doi.org/10.1016/j.pdpdt.2017.04.012"
+        href: "https://doi.org/10.1016/j.pdpdt.2017.04.012",
+        imageSrc: "/images/research/pdpdt-cover-fallback.svg",
+        imageAlt: "Photodiagnosis and Photodynamic Therapy cover-inspired artwork",
+        imageFit: "contain"
       }
     ]
   },

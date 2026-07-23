@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { ContactForm } from "@/app/ContactForm";
+import { SectionNav } from "@/app/SectionNav";
 import {
   contactLinks,
   gallerySections,
@@ -42,7 +43,7 @@ function buildAnchorProps(href: string) {
     : {};
 }
 
-function buildCardArtwork(
+function buildGenericCardArtwork(
   section: (typeof gallerySections)[number],
   item: (typeof gallerySections)[number]["items"][number]
 ) {
@@ -123,6 +124,151 @@ function buildCardArtwork(
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
+function buildSoftwareArtwork(
+  section: (typeof gallerySections)[number],
+  item: (typeof gallerySections)[number]["items"][number]
+) {
+  const title = item.title;
+  const accent = section.accent;
+  const ink = section.ink;
+  const cardFrom = section.cardFrom;
+  const cardTo = section.cardTo;
+
+  const artByTitle: Record<string, string> = {
+    CellRaQ: `
+      <rect x="146" y="170" width="908" height="1160" rx="38" fill="${ink}" opacity="0.88" />
+      <circle cx="600" cy="666" r="232" stroke="${accent}" stroke-width="16" opacity="0.92" />
+      <circle cx="600" cy="666" r="132" stroke="${cardTo}" stroke-width="10" opacity="0.72" />
+      <path d="M348 990C442 912 530 876 610 876C690 876 776 912 858 990" stroke="${cardTo}" stroke-width="14" stroke-linecap="round" />
+      <path d="M600 422V298" stroke="${accent}" stroke-width="14" stroke-linecap="round" />
+      <path d="M536 344H664" stroke="${accent}" stroke-width="14" stroke-linecap="round" />
+      <circle cx="600" cy="666" r="38" fill="${accent}" />
+    `,
+    "Single-Molecule-Tracking-Analysis": `
+      <rect x="124" y="160" width="952" height="1180" rx="40" fill="${ink}" opacity="0.9" />
+      <path d="M220 1030C332 962 404 864 478 766C572 642 644 470 820 364" stroke="${accent}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="220" cy="1030" r="24" fill="${cardTo}" />
+      <circle cx="478" cy="766" r="20" fill="${cardTo}" />
+      <circle cx="820" cy="364" r="24" fill="${accent}" />
+      <circle cx="980" cy="262" r="18" fill="${cardTo}" opacity="0.8" />
+      <path d="M340 1160H964" stroke="${cardTo}" stroke-width="4" opacity="0.24" />
+      <path d="M220 960L980 960" stroke="${cardTo}" stroke-width="2" opacity="0.18" />
+      <path d="M220 780L980 780" stroke="${cardTo}" stroke-width="2" opacity="0.18" />
+      <path d="M220 600L980 600" stroke="${cardTo}" stroke-width="2" opacity="0.18" />
+    `,
+    "Two-Parameter-SMT": `
+      <rect x="140" y="168" width="920" height="1164" rx="40" fill="${ink}" opacity="0.88" />
+      <path d="M246 1050L246 330L960 330" stroke="${cardTo}" stroke-width="8" opacity="0.82" />
+      <circle cx="410" cy="864" r="26" fill="${accent}" />
+      <circle cx="538" cy="724" r="22" fill="${cardTo}" />
+      <circle cx="704" cy="584" r="26" fill="${accent}" />
+      <circle cx="820" cy="472" r="22" fill="${cardTo}" />
+      <circle cx="910" cy="402" r="20" fill="${accent}" />
+      <path d="M410 864L538 724L704 584L820 472L910 402" stroke="${accent}" stroke-width="10" stroke-linecap="round" opacity="0.78" />
+      <rect x="846" y="864" width="102" height="102" rx="18" fill="${accent}" opacity="0.18" />
+    `,
+    "Excitation-multiplexed multicolor super-resolution imaging": `
+      <rect x="120" y="156" width="960" height="1188" rx="40" fill="${ink}" opacity="0.9" />
+      <circle cx="438" cy="628" r="212" fill="#5467D7" opacity="0.52" />
+      <circle cx="716" cy="628" r="212" fill="#D75C7A" opacity="0.46" />
+      <circle cx="578" cy="808" r="212" fill="#D8B35F" opacity="0.44" />
+      <rect x="230" y="280" width="736" height="52" rx="26" fill="${cardTo}" opacity="0.12" />
+      <rect x="230" y="986" width="736" height="52" rx="26" fill="${cardTo}" opacity="0.12" />
+    `,
+    SLOWBALL: `
+      <rect x="122" y="160" width="956" height="1180" rx="42" fill="${ink}" opacity="0.9" />
+      <path d="M214 1028C352 1014 500 992 642 936C782 878 922 780 1080 520" stroke="${accent}" stroke-width="18" stroke-linecap="round" />
+      <path d="M214 1028C378 1016 548 1000 712 972C876 944 1000 890 1080 808" stroke="${cardTo}" stroke-width="12" stroke-linecap="round" opacity="0.66" />
+      <path d="M214 1030L1080 1030" stroke="${cardTo}" stroke-width="4" opacity="0.22" />
+      <path d="M214 824L1080 824" stroke="${cardTo}" stroke-width="2" opacity="0.18" />
+      <path d="M214 618L1080 618" stroke="${cardTo}" stroke-width="2" opacity="0.18" />
+      <path d="M214 412L1080 412" stroke="${cardTo}" stroke-width="2" opacity="0.18" />
+    `,
+    "Personal Lab": `
+      <rect x="132" y="172" width="936" height="1160" rx="40" fill="${ink}" opacity="0.9" />
+      <rect x="226" y="286" width="748" height="742" rx="28" fill="${cardTo}" opacity="0.1" />
+      <rect x="286" y="362" width="260" height="260" rx="22" fill="${accent}" opacity="0.78" />
+      <rect x="602" y="362" width="312" height="80" rx="16" fill="${cardTo}" opacity="0.82" />
+      <rect x="602" y="478" width="248" height="20" rx="10" fill="${cardTo}" opacity="0.42" />
+      <rect x="286" y="676" width="628" height="20" rx="10" fill="${cardTo}" opacity="0.42" />
+      <rect x="286" y="736" width="540" height="20" rx="10" fill="${cardTo}" opacity="0.28" />
+      <rect x="286" y="916" width="202" height="58" rx="16" fill="${accent}" opacity="0.88" />
+    `,
+    "Capital Lab": `
+      <rect x="122" y="164" width="956" height="1172" rx="40" fill="${ink}" opacity="0.9" />
+      <path d="M248 1030L248 324L986 324" stroke="${cardTo}" stroke-width="8" opacity="0.84" />
+      <rect x="338" y="824" width="86" height="206" rx="16" fill="${cardTo}" opacity="0.34" />
+      <rect x="492" y="730" width="86" height="300" rx="16" fill="${accent}" opacity="0.82" />
+      <rect x="646" y="598" width="86" height="432" rx="16" fill="${cardTo}" opacity="0.48" />
+      <rect x="800" y="422" width="86" height="608" rx="16" fill="${accent}" opacity="0.92" />
+      <path d="M338 598C490 560 634 512 886 324" stroke="${accent}" stroke-width="10" stroke-linecap="round" opacity="0.72" />
+    `,
+    "Decision surfaces": `
+      <rect x="132" y="164" width="936" height="1172" rx="40" fill="${ink}" opacity="0.9" />
+      <path d="M234 926C330 828 430 816 540 900C648 982 760 976 876 878C948 816 1004 796 1060 824" stroke="${cardTo}" stroke-width="10" stroke-linecap="round" />
+      <path d="M234 766C330 668 430 656 540 740C648 822 760 816 876 718C948 656 1004 636 1060 664" stroke="${accent}" stroke-width="12" stroke-linecap="round" />
+      <path d="M234 606C330 508 430 496 540 580C648 662 760 656 876 558C948 496 1004 476 1060 504" stroke="${cardTo}" stroke-width="10" stroke-linecap="round" opacity="0.76" />
+      <path d="M234 446C330 348 430 336 540 420C648 502 760 496 876 398C948 336 1004 316 1060 344" stroke="${accent}" stroke-width="12" stroke-linecap="round" opacity="0.92" />
+    `
+  };
+
+  const art = artByTitle[title] ?? `
+    <rect x="118" y="160" width="964" height="1180" rx="34" fill="${ink}" opacity="0.84" />
+    <rect x="118" y="160" width="964" height="76" rx="34" fill="${accent}" opacity="0.26" />
+    <rect x="180" y="310" width="520" height="18" rx="9" fill="${cardTo}" opacity="0.82" />
+    <rect x="180" y="372" width="360" height="18" rx="9" fill="${cardTo}" opacity="0.54" />
+    <rect x="180" y="434" width="620" height="18" rx="9" fill="${cardTo}" opacity="0.72" />
+  `;
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+      <defs>
+        <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${cardFrom}" />
+          <stop offset="100%" stop-color="${cardTo}" />
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="1500" fill="url(#wash)" />
+      ${art}
+      <text x="120" y="132" font-family="'Acid Grotesk', sans-serif" font-size="42" letter-spacing="9" fill="${ink}" opacity="0.68">${escapeSvgText(item.badge)}</text>
+      <text x="120" y="1400" font-family="'Bastardo Grotesk', serif" font-size="112" fill="${ink}" opacity="0.88">${escapeSvgText(title.split(" ").slice(0, 2).join(" "))}</text>
+      <text x="120" y="1452" font-family="'Acid Grotesk', sans-serif" font-size="34" letter-spacing="5" fill="${ink}" opacity="0.56">${escapeSvgText(item.meta)}</text>
+    </svg>
+  `;
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function getItemArtwork(
+  section: (typeof gallerySections)[number],
+  item: (typeof gallerySections)[number]["items"][number]
+) {
+  if (item.imageSrc) {
+    return {
+      src: item.imageSrc,
+      alt: item.imageAlt ?? `${item.title} image`,
+      fit: item.imageFit ?? "cover",
+      unoptimized: false
+    } as const;
+  }
+
+  if (section.id === "software") {
+    return {
+      src: buildSoftwareArtwork(section, item),
+      alt: `${item.title} artwork`,
+      fit: "cover" as const,
+      unoptimized: true
+    };
+  }
+
+  return {
+    src: buildGenericCardArtwork(section, item),
+    alt: `${item.title} artwork`,
+    fit: "cover" as const,
+    unoptimized: true
+  };
+}
+
 export default function HomePage() {
   return (
     <main className="page-shell">
@@ -185,21 +331,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <nav className="scroll-nav" aria-label="Section navigation">
-        <div className="scroll-nav-inner">
-          <a className="scroll-nav-brand" href="#top">
-            pabloaurelio
-          </a>
-
-          <div className="scroll-nav-links">
-            {sectionNavLinks.map((link) => (
-              <a key={link.label} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
+      <SectionNav links={sectionNavLinks} />
 
       <section className="study-shell">
         {gallerySections.map((section) => (
@@ -245,38 +377,87 @@ export default function HomePage() {
 
                   <div className="slowball-figure">
                     <Image
-                      src="/images/slowball/slowball-assets-returns-table.webp"
-                      alt="Slowball asset returns visual."
+                      src="/images/slowball/compound-interest-curves.svg"
+                      alt="Compound interest curves for Slowball."
                       fill
                       sizes="(max-width: 900px) 100vw, 48vw"
                     />
+                    <p className="slowball-panel-caption">
+                      Compound growth calculator
+                    </p>
+                  </div>
+                </div>
+              ) : section.id === "consulting" ? (
+                <div className="consulting-feature">
+                  <div className="consulting-copy">
+                    <p className="consulting-kicker">Technical diligence</p>
+                    <h3>Scientific depth, product instinct, capital awareness.</h3>
+                    <p>
+                      I help investment teams, founders, and companies think
+                      through experimental systems, imaging workflows, research
+                      risk, software structure, and how technical detail
+                      translates into product and capital decisions.
+                    </p>
+                    <p>
+                      My background combines laboratory work, biophysics,
+                      imaging, software building, and long-horizon investing,
+                      which makes it possible to move between the scientific,
+                      technical, and strategic layers of a project.
+                    </p>
+                  </div>
+
+                  <div className="consulting-notes">
+                    {section.items.map((item) => (
+                      <div className="consulting-note" key={item.title}>
+                        <span>{item.title}</span>
+                        <p>{item.meta}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="client-band">
+                    <p className="client-band-label">
+                      Selected clients and projects
+                    </p>
+                    <div className="client-strip">
+                      <span>Deep-tech funds</span>
+                      <span>Research companies</span>
+                      <span>Imaging systems</span>
+                      <span>Case studies soon</span>
+                    </div>
                   </div>
                 </div>
               ) : (
                 <div className="item-grid">
-                  {section.items.map((item) => (
-                    <a
-                      className="item-card"
-                      href={item.href}
-                      key={`${section.id}-${item.title}`}
-                      {...buildAnchorProps(item.href)}
-                    >
-                      <div className="item-figure">
-                        <Image
-                          className="item-image"
-                          src={buildCardArtwork(section, item)}
-                          alt={`${item.title} card artwork`}
-                          fill
-                          sizes="(max-width: 620px) 100vw, (max-width: 1120px) 50vw, 25vw"
-                          unoptimized
-                        />
-                        <span className="item-badge">{item.badge}</span>
-                      </div>
-                      <p className="item-meta">{item.meta}</p>
-                      <h3>{item.title}</h3>
-                      {item.note ? <p className="item-note">{item.note}</p> : null}
-                    </a>
-                  ))}
+                  {section.items.map((item) => {
+                    const artwork = getItemArtwork(section, item);
+
+                    return (
+                      <a
+                        className="item-card"
+                        href={item.href}
+                        key={`${section.id}-${item.title}`}
+                        {...buildAnchorProps(item.href)}
+                      >
+                        <div
+                          className={`item-figure${artwork.fit === "contain" ? " item-figure-journal" : ""}`}
+                        >
+                          <Image
+                            className={`item-image${artwork.fit === "contain" ? " item-image-contain" : ""}`}
+                            src={artwork.src}
+                            alt={artwork.alt}
+                            fill
+                            sizes="(max-width: 620px) 100vw, (max-width: 1120px) 50vw, 25vw"
+                            unoptimized={artwork.unoptimized}
+                          />
+                          <span className="item-badge">{item.badge}</span>
+                        </div>
+                        <p className="item-meta">{item.meta}</p>
+                        <h3>{item.title}</h3>
+                        {item.note ? <p className="item-note">{item.note}</p> : null}
+                      </a>
+                    );
+                  })}
                 </div>
               )}
             </div>

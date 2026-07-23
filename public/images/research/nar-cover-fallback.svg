@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" fill="none">
+  <rect width="1200" height="1500" fill="#F4EFE7"/>
+  <rect x="70" y="70" width="1060" height="1360" fill="#FBF7F1" stroke="#CABBA7" stroke-width="2"/>
+  <rect x="110" y="110" width="980" height="210" fill="#6D86A6"/>
+  <text x="132" y="192" fill="#F8F4EC" font-family="Georgia, serif" font-size="68" letter-spacing="12">NUCLEIC ACIDS</text>
+  <text x="132" y="270" fill="#F8F4EC" font-family="Georgia, serif" font-size="68" letter-spacing="12">RESEARCH</text>
+  <path d="M260 470C380 350 520 370 600 500C680 630 820 650 940 530" stroke="#2A405E" stroke-width="18" stroke-linecap="round"/>
+  <path d="M260 1030C380 910 520 930 600 1060C680 1190 820 1210 940 1090" stroke="#2A405E" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 540C390 470 510 490 570 590C630 690 745 708 860 620" stroke="#C9B186" stroke-width="12" stroke-linecap="round"/>
+  <path d="M300 1100C390 1030 510 1050 570 1150C630 1250 745 1268 860 1180" stroke="#C9B186" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="280" cy="420" r="22" fill="#2A405E"/>
+  <circle cx="920" cy="580" r="22" fill="#2A405E"/>
+  <circle cx="280" cy="980" r="22" fill="#2A405E"/>
+  <circle cx="920" cy="1140" r="22" fill="#2A405E"/>
+  <text x="132" y="1380" fill="#6A5D4F" font-family="Arial, sans-serif" font-size="36" letter-spacing="7">JOURNAL COVER REFERENCE</text>
+</svg>

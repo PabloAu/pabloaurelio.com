@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" fill="none">
+  <rect width="1200" height="1500" fill="#F0ECE6"/>
+  <rect x="82" y="82" width="1036" height="1336" fill="#F8F4EE" stroke="#D3C8BA" stroke-width="2"/>
+  <rect x="82" y="82" width="1036" height="180" fill="#7B5B44"/>
+  <text x="120" y="160" fill="#F6EEE2" font-family="Georgia, serif" font-size="46">Photodiagnosis</text>
+  <text x="120" y="216" fill="#F6EEE2" font-family="Georgia, serif" font-size="46">and Photodynamic Therapy</text>
+  <circle cx="602" cy="770" r="280" fill="#D5B368" opacity="0.42"/>
+  <circle cx="602" cy="770" r="220" fill="#A84F4A" opacity="0.38"/>
+  <circle cx="602" cy="770" r="154" fill="#7B2330" opacity="0.42"/>
+  <path d="M250 770H954" stroke="#5D4030" stroke-width="10" stroke-linecap="round"/>
+  <path d="M602 420V1120" stroke="#5D4030" stroke-width="10" stroke-linecap="round"/>
+  <path d="M340 510L864 1030" stroke="#5D4030" stroke-width="7" stroke-linecap="round" opacity="0.7"/>
+  <path d="M864 510L340 1030" stroke="#5D4030" stroke-width="7" stroke-linecap="round" opacity="0.7"/>
+  <text x="120" y="1368" fill="#756757" font-family="Arial, sans-serif" font-size="34" letter-spacing="7">COVER REFERENCE</text>
+</svg>
