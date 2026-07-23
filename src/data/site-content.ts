@@ -50,7 +50,8 @@ export const sectionNavLinks: SectionLink[] = [
   { label: "Software", href: "#software" },
   { label: "Investing", href: "#slowball" },
   { label: "Literature", href: "#literature" },
-  { label: "Consulting", href: "#consulting" },
+  { label: "Innovation", href: "#innovation" },
+  { label: "Teaching", href: "#teaching" },
   { label: "Contact", href: "#contact" }
 ];
 
@@ -79,7 +80,7 @@ export const gallerySections: GallerySection[] = [
         href: "https://rupress.org/jcb/article/225/6/e202601119/281838/The-environmental-stress-response-regulates",
         note:
           "Shows how the environmental stress response reorganizes cytoplasmic material properties to protect cells in quiescence.",
-        themes: ["Stress response", "Cytoplasm", "Quiescence"]
+        themes: ["Stress & quiescence", "Cytoplasmic biophysics"]
       },
       {
         badge: "2025",
@@ -89,7 +90,7 @@ export const gallerySections: GallerySection[] = [
         href: "https://www.sciencedirect.com/science/article/pii/S1097276525009001",
         note:
           "Connects transcription timing with selective translation during acute stress to explain how cells prioritize new gene expression.",
-        themes: ["Stress response", "Translation", "Gene regulation"]
+        themes: ["Stress & quiescence", "Genome regulation"]
       },
       {
         badge: "2025",
@@ -99,27 +100,77 @@ export const gallerySections: GallerySection[] = [
         href: "https://doi.org/10.1016/j.celrep.2025.116204",
         note:
           "Demonstrates that ribosome-loaded mRNA is a major determinant of the physical behavior of the eukaryotic cytoplasm.",
-        themes: ["Cytoplasm", "Translation", "Biophysics"]
+        themes: ["Cytoplasmic biophysics", "Genome regulation"]
+      },
+      {
+        badge: "2025",
+        meta: "eLife",
+        title:
+          "SMARCAD1 and TOPBP1 contribute to heterochromatin maintenance at the transition from the 2C-like to the pluripotent state",
+        href: "https://doi.org/10.7554/eLife.87742",
+        note:
+          "Identifies SMARCAD1 and TOPBP1 as regulators of heterochromatin recovery during the transition from 2C-like cells back to pluripotency.",
+        themes: ["Stem cells", "Genome regulation", "Chromatin dynamics"]
+      },
+      {
+        badge: "2024",
+        meta: "Nucleic Acids Research",
+        title:
+          "The relationship between nanoscale genome organization and gene expression in mouse embryonic stem cells during pluripotency transition",
+        href: "https://doi.org/10.1093/nar/gkae476",
+        note:
+          "Links nanoscale genome remodeling to changes in pluripotency gene expression during the transition from naive to primed stem-cell states.",
+        themes: ["Stem cells", "Genome regulation", "Imaging methods"]
+      },
+      {
+        badge: "2021",
+        meta: "Molecular Cell",
+        title:
+          "Transcription-mediated supercoiling regulates genome folding and loop formation",
+        href: "https://doi.org/10.1016/j.molcel.2021.06.009",
+        note:
+          "Shows that transcription-generated supercoiling directly contributes to loop formation and large-scale genome folding.",
+        themes: ["Genome regulation", "Chromatin dynamics"]
       },
       {
         badge: "2021",
         meta: "Cell Reports",
         title:
-          "Cell cycle entry is controlled by the translational reprogramming of quiescent G0 cells",
+          "Distinct properties and functions of CTCF revealed by a rapidly inducible degron system",
+        href: "https://doi.org/10.1016/j.celrep.2021.108783",
+        note:
+          "Uses an inducible degron system to reveal that different CTCF sites vary in chromatin residence, boundary strength, and transcriptional roles.",
+        themes: ["Genome regulation", "Chromatin dynamics"]
+      },
+      {
+        badge: "2021",
+        meta: "Cell Reports",
+        title:
+          "Mesoscale Modeling and Single-Nucleosome Tracking Reveal Remodeling of Clutch Folding and Dynamics in Stem Cell Differentiation",
         href: "https://doi.org/10.1016/j.celrep.2020.108614",
         note:
-          "Explains how dormant cells re-enter the cycle by reshaping translation before large-scale transcriptional changes take over.",
-        themes: ["Quiescence", "Translation", "Cell cycle"]
+          "Combines modeling and single-nucleosome tracking to show how nucleosome clutch organization is remodeled during stem-cell differentiation.",
+        themes: ["Stem cells", "Chromatin dynamics", "Imaging methods"]
+      },
+      {
+        badge: "2020",
+        meta: "STAR Protocols",
+        title:
+          "Two-parameter single-molecule analysis for measurement of chromatin mobility",
+        href: "https://doi.org/10.1016/j.xpro.2020.100223",
+        note:
+          "Provides a practical workflow for quantifying chromatin mobility from single-molecule tracking in living cells.",
+        themes: ["Imaging methods", "Chromatin dynamics"]
       },
       {
         badge: "2020",
         meta: "Molecular Cell",
         title:
-          "Single-nucleosome imaging reveals control of parental histone recycling by free histones during DNA replication",
+          "Two-parameter mobility assessments discriminate diverse regulatory factor behaviors in chromatin",
         href: "https://doi.org/10.1016/j.molcel.2020.05.036",
         note:
-          "Uses single-nucleosome imaging to show how free histones modulate parental histone recycling at the replication fork.",
-        themes: ["Chromatin", "DNA replication", "Imaging"]
+          "Introduces a two-parameter mobility framework that separates how regulatory proteins search, bind, and behave on chromatin.",
+        themes: ["Chromatin dynamics", "Imaging methods"]
       },
       {
         badge: "2019",
@@ -129,27 +180,27 @@ export const gallerySections: GallerySection[] = [
         href: "https://doi.org/10.1093/nar/gkz593",
         note:
           "Measures how histone acetylation changes nucleosomal DNA compaction directly inside living cells with super-resolution microscopy.",
-        themes: ["Chromatin", "Imaging", "Epigenetics"]
+        themes: ["Chromatin dynamics", "Imaging methods"]
       },
       {
         badge: "2018",
         meta: "Proceedings of the National Academy of Sciences",
         title:
-          "DNA compaction and repositioning induced by the formation of the 30-nm chromatin fiber",
+          "Excitation-multiplexed multicolor superresolution imaging with fm-STORM and fm-DNA-PAINT",
         href: "https://doi.org/10.1073/pnas.1804725115",
         note:
-          "Shows how higher-order chromatin fiber formation reshapes both DNA compaction and the spatial positioning of nucleosomal regions.",
-        themes: ["Chromatin", "Biophysics", "Imaging"]
+          "Develops a multiplexed super-resolution microscopy approach that accelerates multicolor imaging without sacrificing field of view.",
+        themes: ["Imaging methods"]
       },
       {
         badge: "2018",
         meta: "Nucleic Acids Research",
         title:
-          "PoSTAC: a tool for the analysis of DNA compaction by super-resolution microscopy",
+          "(Po)STAC (Polycistronic SunTAg modified CRISPR) enables live-cell and fixed-cell super-resolution imaging of multiple genes",
         href: "https://doi.org/10.1093/nar/gkx1271",
         note:
-          "Introduces a quantitative analysis tool for measuring DNA compaction from super-resolution microscopy data.",
-        themes: ["Methods", "Imaging", "Software"]
+          "Introduces a CRISPR-SunTag labeling strategy for multiplexed live-cell and fixed-cell super-resolution imaging of genes.",
+        themes: ["Imaging methods", "Genome regulation"]
       },
       {
         badge: "2017",
@@ -159,7 +210,7 @@ export const gallerySections: GallerySection[] = [
         href: "https://doi.org/10.1016/j.pdpdt.2017.04.012",
         note:
           "Characterizes the light-driven and biological behavior of redaporfin to support its use in photodynamic therapy.",
-        themes: ["Photophysics", "Methods", "Biophysics"]
+        themes: ["Optical biophotonics"]
       }
     ]
   },
@@ -295,42 +346,117 @@ export const gallerySections: GallerySection[] = [
     ]
   },
   {
-    id: "consulting",
-    label: "Consulting",
+    id: "innovation",
+    label: "Technology & Innovation",
     layout: "landscape",
     background:
-      "linear-gradient(180deg, rgba(217, 223, 219, 1) 0%, rgba(202, 210, 206, 1) 100%)",
+      "linear-gradient(180deg, rgba(221, 227, 226, 1) 0%, rgba(206, 214, 211, 1) 100%)",
     overlay:
-      "radial-gradient(circle at 16% 14%, rgba(109, 134, 166, 0.15), transparent 24%), radial-gradient(circle at 86% 20%, rgba(118, 136, 123, 0.16), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(31,39,34,0.03))",
-    cardFrom: "#d9e0db",
-    cardTo: "#b8c3be",
+      "radial-gradient(circle at 16% 14%, rgba(109, 134, 166, 0.15), transparent 24%), radial-gradient(circle at 86% 20%, rgba(133, 121, 93, 0.16), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(31,39,34,0.03))",
+    cardFrom: "#dde3df",
+    cardTo: "#c0c9c5",
     ink: "#1f2723",
     muted: "#596762",
-    accent: "#6e8d7a",
+    accent: "#6d86a6",
     items: [
       {
-        badge: "Work",
-        meta: "Scientific and technical review",
+        badge: "Patent",
+        meta: "US Patent 11,287,628 B2 · Granted 2022",
+        title: "Multi-color imaging",
+        href: "https://patents.google.com/patent/US11287628",
+        note:
+          "Frequency-modulated multicolor imaging for faster fluorescence and super-resolution acquisition with simpler optical layouts."
+      },
+      {
+        badge: "Patent",
+        meta: "BR 10 2015 026020 2 B1 · Granted",
+        title:
+          "Portable reflectance and fluorescence microendoscope for smartphones",
+        href: "https://bv.fapesp.br/en/papi-nuplitec/808/microendoscopio-de-refletancia-e-fluorescencia-portatil-acoplavel-a-smartphones-e-similares-e-seus/",
+        note:
+          "Portable smartphone-coupled reflectance and fluorescence microendoscope for biomedical imaging and point-of-care applications."
+      },
+      {
+        badge: "Service",
+        meta: "Deep-tech assessment",
         title: "Technical diligence",
         href: "#contact"
       },
       {
-        badge: "Work",
-        meta: "Imaging and biophysics",
-        title: "Research assessment",
+        badge: "Service",
+        meta: "Microscopy, software, and instrumentation",
+        title: "R&D and product evaluation",
         href: "#contact"
       },
       {
-        badge: "Work",
-        meta: "Technology and product",
-        title: "Systems evaluation",
+        badge: "Service",
+        meta: "Science translated into decisions",
+        title: "Technology strategy and communication",
         href: "#contact"
+      }
+    ]
+  },
+  {
+    id: "teaching",
+    label: "Teaching",
+    layout: "landscape",
+    background:
+      "linear-gradient(180deg, rgba(232, 229, 220, 1) 0%, rgba(220, 214, 201, 1) 100%)",
+    overlay:
+      "radial-gradient(circle at 14% 16%, rgba(109, 134, 166, 0.12), transparent 24%), radial-gradient(circle at 84% 20%, rgba(162, 138, 97, 0.14), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(42,34,22,0.03))",
+    cardFrom: "#e7e0d2",
+    cardTo: "#cdc1ae",
+    ink: "#292118",
+    muted: "#6a5c4a",
+    accent: "#7e8fa8",
+    items: [
+      {
+        badge: "2026",
+        meta: "ETH Zurich · MSc lecture",
+        title: "Scientific Concepts and Methods",
+        href: "#teaching",
+        note:
+          "Four-hour lecture for master's students in Pharmacy, Biology, Biotechnology, and Translational Sciences."
       },
       {
-        badge: "Work",
-        meta: "Capital and process",
-        title: "Investment analysis",
-        href: "#contact"
+        badge: "2024",
+        meta: "ETH Zurich · BSc lecture",
+        title: "Advanced microscopy techniques for biology",
+        href: "#teaching",
+        note:
+          "Optical methods lecture on modern microscopy for bachelor students."
+      },
+      {
+        badge: "2024",
+        meta: "ETH Zurich · BSc lecture",
+        title: "Cell dynamics and anomalous diffusion",
+        href: "#teaching",
+        note:
+          "Short lecture on quantitative cell dynamics and non-Brownian transport."
+      },
+      {
+        badge: "2021–2024",
+        meta: "ETH Zurich · Practical teaching",
+        title: "Molecular and cell biology tools",
+        href: "#teaching",
+        note:
+          "Led Grundlagen practical courses for bachelor students across approximately 50 teaching hours."
+      },
+      {
+        badge: "2024",
+        meta: "ETH Zurich · Supervision",
+        title: "Cell-iSCAT semester project",
+        href: "#teaching",
+        note:
+          "Supervised a master project on quantifying macromolecular crowding dynamics in single live cells."
+      },
+      {
+        badge: "2022",
+        meta: "ETH Zurich · Block course",
+        title: "Tools for probing living cells and image analysis methods",
+        href: "#teaching",
+        note:
+          "Four-week practical teaching in live-cell methods and image analysis for bachelor students."
       }
     ]
   }

@@ -390,44 +390,86 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
-              ) : section.id === "consulting" ? (
-                <div className="consulting-feature">
-                  <div className="consulting-copy">
-                    <p className="consulting-kicker">Technical diligence</p>
-                    <h3>Scientific depth, product instinct, capital awareness.</h3>
+              ) : section.id === "innovation" ? (
+                <div className="innovation-feature">
+                  <div className="innovation-copy">
+                    <p className="innovation-kicker">Patents and advisory</p>
+                    <h3>
+                      Science, imaging, software, and technical judgment
+                      translated into useful decisions.
+                    </h3>
                     <p>
-                      I help investment teams, founders, and companies think
-                      through experimental systems, imaging workflows, research
-                      risk, software structure, and how technical detail
-                      translates into product and capital decisions.
+                      I work across microscopy, biophysics, instrumentation,
+                      software, and deep-tech evaluation. The same attention to
+                      experimental detail that shapes my scientific work also
+                      informs how I assess technology, product direction, and
+                      technical risk.
                     </p>
                     <p>
-                      My background combines laboratory work, biophysics,
-                      imaging, software building, and long-horizon investing,
-                      which makes it possible to move between the scientific,
-                      technical, and strategic layers of a project.
+                      I help founders, investment teams, and companies think
+                      through scientific claims, R&amp;D paths, imaging systems,
+                      software tools, and whether a technology can become
+                      something robust, useful, and investable.
                     </p>
                   </div>
 
-                  <div className="consulting-notes">
+                  <div className="patent-grid">
+                    {section.items
+                      .filter((item) => item.badge === "Patent")
+                      .map((item) => (
+                        <a
+                          className="patent-card"
+                          href={item.href}
+                          key={item.title}
+                          {...buildAnchorProps(item.href)}
+                        >
+                          <span className="patent-label">{item.badge}</span>
+                          <p className="patent-meta">{item.meta}</p>
+                          <h3>{item.title}</h3>
+                          {item.note ? <p className="patent-note">{item.note}</p> : null}
+                        </a>
+                      ))}
+                  </div>
+
+                  <div className="service-grid">
+                    {section.items
+                      .filter((item) => item.badge === "Service")
+                      .map((item) => (
+                        <article className="service-card" key={item.title}>
+                          <span className="service-label">{item.badge}</span>
+                          <h3>{item.title}</h3>
+                          <p>{item.meta}</p>
+                        </article>
+                      ))}
+                  </div>
+                </div>
+              ) : section.id === "teaching" ? (
+                <div className="teaching-feature">
+                  <div className="teaching-copy">
+                    <p className="teaching-kicker">
+                      Lectures, practical training, and supervision
+                    </p>
+                    <h3>
+                      Teaching that stays close to the bench, the microscope,
+                      and the question itself.
+                    </h3>
+                    <p>
+                      My teaching moves between concepts, experiments, and
+                      analysis. I enjoy explaining difficult ideas clearly,
+                      connecting methods to first principles, and helping
+                      students develop technical taste as well as confidence.
+                    </p>
+                  </div>
+
+                  <div className="teaching-grid">
                     {section.items.map((item) => (
-                      <div className="consulting-note" key={item.title}>
-                        <span>{item.title}</span>
-                        <p>{item.meta}</p>
-                      </div>
+                      <article className="teaching-card" key={item.title}>
+                        <span className="teaching-year">{item.badge}</span>
+                        <p className="teaching-meta">{item.meta}</p>
+                        <h3>{item.title}</h3>
+                        {item.note ? <p className="teaching-note">{item.note}</p> : null}
+                      </article>
                     ))}
-                  </div>
-
-                  <div className="client-band">
-                    <p className="client-band-label">
-                      Selected clients and projects
-                    </p>
-                    <div className="client-strip">
-                      <span>Deep-tech funds</span>
-                      <span>Research companies</span>
-                      <span>Imaging systems</span>
-                      <span>Case studies soon</span>
-                    </div>
                   </div>
                 </div>
               ) : (
@@ -494,7 +536,7 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <p>pabloaurelio.com</p>
-        <p>Research, software, literature, investing, and technical diligence.</p>
+        <p>Research, software, literature, investing, innovation, and teaching.</p>
       </footer>
     </main>
   );

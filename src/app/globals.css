@@ -660,7 +660,14 @@ img {
 .item-meta,
 .contact-link span,
 .form-field label,
-.slowball-kicker {
+.slowball-kicker,
+.innovation-kicker,
+.teaching-kicker,
+.patent-label,
+.service-label,
+.teaching-year,
+.teaching-meta,
+.patent-meta {
   margin: 0;
   color: var(--section-muted);
   font-family: var(--font-mono), sans-serif;
@@ -771,91 +778,116 @@ img {
   text-transform: uppercase;
 }
 
-.consulting-feature {
+.innovation-feature,
+.teaching-feature {
   display: grid;
   gap: 28px;
 }
 
-.consulting-copy {
-  max-width: 42rem;
+.innovation-copy,
+.teaching-copy {
+  display: grid;
+  gap: 12px;
+  max-width: 46rem;
 }
 
-.consulting-copy h3 {
+.innovation-copy h3,
+.teaching-copy h3 {
+  margin: 0;
+  font-family: var(--font-display), serif;
   font-size: clamp(2.3rem, 3.8vw, 4rem);
+  font-weight: 600;
   line-height: 0.92;
-  margin-top: 10px;
 }
 
-.consulting-copy p {
-  margin: 14px 0 0;
+.innovation-copy p,
+.teaching-copy p {
+  margin: 0;
   max-width: 38rem;
   color: rgba(31, 39, 35, 0.82);
   font-size: 0.96rem;
   line-height: 1.7;
 }
 
-.consulting-kicker,
-.client-band-label {
-  margin: 0;
-  color: var(--section-muted);
-  font-family: var(--font-mono), sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.patent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
-.consulting-notes {
+.patent-card {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-content: start;
+  gap: 10px;
+  min-height: 236px;
+  padding: 22px 22px 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.16)),
+    radial-gradient(circle at top right, rgba(109, 134, 166, 0.12), transparent 42%);
+  box-shadow: 0 18px 34px rgba(33, 24, 17, 0.08);
+}
+
+.patent-card:hover,
+.service-card:hover,
+.teaching-card:hover {
+  transform: translateY(-3px);
+}
+
+.patent-label,
+.teaching-year {
+  color: var(--section-accent);
+}
+
+.patent-card h3,
+.service-card h3,
+.teaching-card h3 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-wrap: pretty;
+}
+
+.patent-note,
+.service-card p,
+.teaching-note {
+  margin: 0;
+  color: rgba(31, 39, 35, 0.68);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
-.consulting-note {
-  min-height: 110px;
+.service-card,
+.teaching-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 146px;
   padding: 18px 18px 16px;
   background: rgba(255, 255, 255, 0.24);
   backdrop-filter: blur(6px);
 }
 
-.consulting-note span {
-  display: block;
-  font-family: var(--font-display), serif;
-  font-size: 1.14rem;
-  letter-spacing: -0.03em;
+.service-card h3 {
+  font-size: 1.06rem;
 }
 
-.consulting-note p {
-  margin: 8px 0 0;
-  color: rgba(31, 39, 35, 0.68);
-  font-size: 0.8rem;
-  line-height: 1.55;
-}
-
-.client-band {
+.teaching-grid {
   display: grid;
-  gap: 12px;
-  padding-top: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
-.client-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.client-strip span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 64px;
-  border: 1px dashed rgba(31, 39, 35, 0.22);
-  color: rgba(31, 39, 35, 0.6);
-  font-family: var(--font-mono), sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.teaching-card {
+  min-height: 210px;
 }
 
 .contact-section {
@@ -999,8 +1031,8 @@ img {
     min-height: 24rem;
   }
 
-  .consulting-notes,
-  .client-strip {
+  .service-grid,
+  .teaching-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1058,8 +1090,13 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .consulting-copy h3 {
+  .innovation-copy h3,
+  .teaching-copy h3 {
     font-size: 2.4rem;
+  }
+
+  .patent-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1098,8 +1135,8 @@ img {
 
   .item-grid,
   .contact-form,
-  .consulting-notes,
-  .client-strip {
+  .service-grid,
+  .teaching-grid {
     grid-template-columns: 1fr;
   }
 

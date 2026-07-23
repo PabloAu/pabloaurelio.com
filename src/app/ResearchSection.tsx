@@ -10,38 +10,42 @@ type ResearchSectionProps = {
 
 const THEME_ORDER = [
   "All",
-  "Stress response",
-  "Cytoplasm",
-  "Chromatin",
-  "Imaging",
-  "Translation",
-  "Quiescence",
-  "Methods",
-  "Biophysics",
-  "Gene regulation",
-  "DNA replication",
-  "Epigenetics",
-  "Cell cycle",
-  "Photophysics",
-  "Software"
+  "Stress & quiescence",
+  "Cytoplasmic biophysics",
+  "Genome regulation",
+  "Chromatin dynamics",
+  "Imaging methods",
+  "Stem cells",
+  "Optical biophotonics"
 ];
 
 const THEME_ACCENTS: Record<string, { accent: string; glow: string }> = {
   All: { accent: "#6d86a6", glow: "rgba(109, 134, 166, 0.18)" },
-  "Stress response": { accent: "#6d86a6", glow: "rgba(109, 134, 166, 0.18)" },
-  Cytoplasm: { accent: "#8c9c76", glow: "rgba(140, 156, 118, 0.18)" },
-  Chromatin: { accent: "#8f6f58", glow: "rgba(143, 111, 88, 0.18)" },
-  Imaging: { accent: "#5f799e", glow: "rgba(95, 121, 158, 0.18)" },
-  Translation: { accent: "#af8753", glow: "rgba(175, 135, 83, 0.18)" },
-  Quiescence: { accent: "#748b87", glow: "rgba(116, 139, 135, 0.18)" },
-  Methods: { accent: "#85714d", glow: "rgba(133, 113, 77, 0.18)" },
-  Biophysics: { accent: "#7a7aa1", glow: "rgba(122, 122, 161, 0.18)" },
-  "Gene regulation": { accent: "#6b8a8b", glow: "rgba(107, 138, 139, 0.18)" },
-  "DNA replication": { accent: "#8f7c68", glow: "rgba(143, 124, 104, 0.18)" },
-  Epigenetics: { accent: "#9a7c91", glow: "rgba(154, 124, 145, 0.18)" },
-  "Cell cycle": { accent: "#9d815f", glow: "rgba(157, 129, 95, 0.18)" },
-  Photophysics: { accent: "#9a6f52", glow: "rgba(154, 111, 82, 0.18)" },
-  Software: { accent: "#7a829b", glow: "rgba(122, 130, 155, 0.18)" }
+  "Stress & quiescence": {
+    accent: "#6d86a6",
+    glow: "rgba(109, 134, 166, 0.18)"
+  },
+  "Cytoplasmic biophysics": {
+    accent: "#8c9c76",
+    glow: "rgba(140, 156, 118, 0.18)"
+  },
+  "Genome regulation": {
+    accent: "#6b8a8b",
+    glow: "rgba(107, 138, 139, 0.18)"
+  },
+  "Chromatin dynamics": {
+    accent: "#8f6f58",
+    glow: "rgba(143, 111, 88, 0.18)"
+  },
+  "Imaging methods": {
+    accent: "#5f799e",
+    glow: "rgba(95, 121, 158, 0.18)"
+  },
+  "Stem cells": { accent: "#9a7c91", glow: "rgba(154, 124, 145, 0.18)" },
+  "Optical biophotonics": {
+    accent: "#9a6f52",
+    glow: "rgba(154, 111, 82, 0.18)"
+  }
 };
 
 function getThemeList(section: GallerySection) {
@@ -70,8 +74,9 @@ export function ResearchSection({ section }: ResearchSectionProps) {
     <div className="research-panel">
       <div className="research-intro">
         <p>
-          A line of work across cytoplasmic biophysics, chromatin organization,
-          microscopy, quiescence, and stress response.
+          Fourteen peer-reviewed journal papers across chromatin dynamics,
+          genome regulation, stem cells, microscopy, stress biology, and the
+          biophysics of living matter.
         </p>
 
         <div className="research-filters" role="tablist" aria-label="Research themes">
