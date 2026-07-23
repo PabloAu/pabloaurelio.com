@@ -3,21 +3,12 @@ export type SectionLink = {
   href: string;
 };
 
-export type HeroMarker = {
-  label: string;
-  href: string;
-  x: number;
-  y: number;
-  tone: string;
-};
-
 export type GalleryItem = {
   title: string;
   meta: string;
   badge: string;
   href: string;
   note?: string;
-  featured?: boolean;
 };
 
 export type GallerySection = {
@@ -44,7 +35,7 @@ export type ContactLink = {
 
 export const heroQuote = {
   text:
-    "Toda obra grande, en arte como en ciencia, es el resultado de una gran pasión puesta al servicio de una gran idea.",
+    "Science may not yet know the final why of things, but through time it may come closer to the laws that govern matter, life, and thought.",
   attribution: "Santiago Ramon y Cajal",
   sourceLabel: "Reglas y consejos sobre investigacion cientifica",
   sourceHref: "https://gutenberg.org/files/66373/66373-h/66373-h.htm"
@@ -55,54 +46,8 @@ export const sectionNavLinks: SectionLink[] = [
   { label: "Software", href: "#software" },
   { label: "Investing", href: "#slowball" },
   { label: "Literature", href: "#literature" },
-  { label: "Library", href: "#library" },
   { label: "Consulting", href: "#consulting" },
   { label: "Contact", href: "#contact" }
-];
-
-export const heroMarkers: HeroMarker[] = [
-  {
-    label: "Software",
-    href: "#software",
-    x: 12,
-    y: 53,
-    tone: "#6d86a6"
-  },
-  {
-    label: "Library",
-    href: "#library",
-    x: 59,
-    y: 15,
-    tone: "#6d86a6"
-  },
-  {
-    label: "Research",
-    href: "#research",
-    x: 39,
-    y: 46,
-    tone: "#6d86a6"
-  },
-  {
-    label: "Consulting",
-    href: "#consulting",
-    x: 87,
-    y: 31,
-    tone: "#6d86a6"
-  },
-  {
-    label: "Literature",
-    href: "#literature",
-    x: 17,
-    y: 70,
-    tone: "#6d86a6"
-  },
-  {
-    label: "Investing\neducation",
-    href: "#slowball",
-    x: 90,
-    y: 84,
-    tone: "#6d86a6"
-  }
 ];
 
 export const gallerySections: GallerySection[] = [
@@ -113,43 +58,77 @@ export const gallerySections: GallerySection[] = [
     linkHref: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es",
     layout: "landscape",
     background:
-      "linear-gradient(180deg, rgba(245, 239, 229, 1) 0%, rgba(231, 223, 209, 1) 100%)",
+      "linear-gradient(180deg, rgba(238, 230, 215, 1) 0%, rgba(228, 217, 196, 1) 100%)",
     overlay:
-      "radial-gradient(circle at 14% 12%, rgba(192, 179, 149, 0.22), transparent 28%), radial-gradient(circle at 84% 18%, rgba(151, 175, 158, 0.18), transparent 22%)",
-    cardFrom: "#d5ccb9",
-    cardTo: "#eee5d3",
-    ink: "#2f2419",
-    muted: "#675847",
-    accent: "#7a6b53",
+      "radial-gradient(circle at 12% 12%, rgba(135, 153, 170, 0.18), transparent 26%), radial-gradient(circle at 88% 18%, rgba(181, 155, 104, 0.16), transparent 24%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(45,34,23,0.02))",
+    cardFrom: "#efe4d1",
+    cardTo: "#cfc2aa",
+    ink: "#241c16",
+    muted: "#665748",
+    accent: "#6d86a6",
     items: [
       {
         badge: "2026",
         meta: "Journal of Cell Biology",
         title:
           "The environmental stress response regulates biophysics of the cytoplasm and survival in quiescence",
-        href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es",
-        featured: true
+        href: "https://rupress.org/jcb/article/225/6/e202601119/281838/The-environmental-stress-response-regulates"
       },
       {
         badge: "2025",
         meta: "Molecular Cell",
         title:
           "Timing of transcription controls the selective translation of newly synthesized mRNAs during acute environmental stress",
-        href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
+        href: "https://www.sciencedirect.com/science/article/pii/S1097276525009001"
       },
       {
         badge: "2025",
         meta: "Cell Reports",
         title:
           "Polysomes and mRNA control the biophysical properties of the eukaryotic cytoplasm",
-        href: "https://scholar.google.es/citations?user=wBn676IAAAAJ&hl=es"
+        href: "https://doi.org/10.1016/j.celrep.2025.116204"
+      },
+      {
+        badge: "2021",
+        meta: "Cell Reports",
+        title:
+          "Cell cycle entry is controlled by the translational reprogramming of quiescent G0 cells",
+        href: "https://doi.org/10.1016/j.celrep.2020.108614"
+      },
+      {
+        badge: "2020",
+        meta: "Molecular Cell",
+        title:
+          "Single-nucleosome imaging reveals control of parental histone recycling by free histones during DNA replication",
+        href: "https://doi.org/10.1016/j.molcel.2020.05.036"
       },
       {
         badge: "2019",
         meta: "Nucleic Acids Research",
         title:
           "Super-resolution microscopy reveals how histone tail acetylation affects DNA compaction within nucleosomes in vivo",
-        href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6895258/"
+        href: "https://doi.org/10.1093/nar/gkz593"
+      },
+      {
+        badge: "2018",
+        meta: "Proceedings of the National Academy of Sciences",
+        title:
+          "DNA compaction and repositioning induced by the formation of the 30-nm chromatin fiber",
+        href: "https://doi.org/10.1073/pnas.1804725115"
+      },
+      {
+        badge: "2018",
+        meta: "Nucleic Acids Research",
+        title:
+          "PoSTAC: a tool for the analysis of DNA compaction by super-resolution microscopy",
+        href: "https://doi.org/10.1093/nar/gkx1271"
+      },
+      {
+        badge: "2017",
+        meta: "Photodiagnosis and Photodynamic Therapy",
+        title:
+          "Photophysical and photobiological properties of the redaporfin photosensitizer",
+        href: "https://doi.org/10.1016/j.pdpdt.2017.04.012"
       }
     ]
   },
@@ -160,21 +139,20 @@ export const gallerySections: GallerySection[] = [
     linkHref: "https://github.com/PabloAu",
     layout: "landscape",
     background:
-      "linear-gradient(180deg, rgba(31, 26, 22, 1) 0%, rgba(18, 15, 13, 1) 100%)",
+      "linear-gradient(180deg, rgba(31, 24, 18, 1) 0%, rgba(18, 14, 11, 1) 100%)",
     overlay:
-      "radial-gradient(circle at 12% 22%, rgba(199, 158, 77, 0.18), transparent 26%), radial-gradient(circle at 86% 18%, rgba(139, 108, 64, 0.14), transparent 26%)",
-    cardFrom: "#453421",
-    cardTo: "#201913",
-    ink: "#f0e3c5",
-    muted: "#cdbd9b",
-    accent: "#e4c17d",
+      "radial-gradient(circle at 14% 16%, rgba(109, 134, 166, 0.18), transparent 26%), radial-gradient(circle at 84% 18%, rgba(217, 183, 104, 0.14), transparent 26%), linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.08))",
+    cardFrom: "#403223",
+    cardTo: "#17120f",
+    ink: "#f3e7cc",
+    muted: "#ccbfa4",
+    accent: "#d7b768",
     items: [
       {
         badge: "Repo",
-        meta: "Scientific tooling",
+        meta: "Scientific image analysis",
         title: "CellRaQ",
-        href: "https://github.com/PabloAu/CellRaQ",
-        featured: true
+        href: "https://github.com/PabloAu/CellRaQ"
       },
       {
         badge: "Repo",
@@ -189,26 +167,33 @@ export const gallerySections: GallerySection[] = [
         href: "https://github.com/PabloAu/Two-Parameter-SMT"
       },
       {
-        badge: "Tool",
-        meta: "Portfolio software",
-        title: "SlowballTracker",
-        href: "#slowball"
+        badge: "Repo",
+        meta: "Multicolor super-resolution",
+        title:
+          "Excitation-multiplexed multicolor super-resolution imaging",
+        href: "https://github.com/PabloAu/Excitation-multiplexed-multicolor-super-resolution-imaging-with-fm-DNA-PAINT-and-fm-STORM"
+      },
+      {
+        badge: "Repo",
+        meta: "Tracking and capital",
+        title: "SLOWBALL",
+        href: "https://github.com/PabloAu/SLOWBALL"
       },
       {
         badge: "App",
-        meta: "Knowledge and decisions",
+        meta: "In development",
         title: "Personal Lab",
         href: "#contact"
       },
       {
         badge: "App",
-        meta: "Research and capital",
+        meta: "In development",
         title: "Capital Lab",
         href: "#contact"
       },
       {
-        badge: "Prototype",
-        meta: "Interface language",
+        badge: "System",
+        meta: "Decision tools",
         title: "Decision surfaces",
         href: "#contact"
       }
@@ -216,155 +201,65 @@ export const gallerySections: GallerySection[] = [
   },
   {
     id: "slowball",
-    label: "Slowball",
+    label: "Investing",
     linkLabel: "slowball.ch",
     linkHref: "https://slowball.ch",
     layout: "landscape",
     background:
-      "linear-gradient(180deg, rgba(58, 49, 31, 1) 0%, rgba(34, 29, 20, 1) 100%)",
+      "linear-gradient(180deg, rgba(43, 35, 26, 1) 0%, rgba(26, 22, 17, 1) 100%)",
     overlay:
-      "radial-gradient(circle at 16% 18%, rgba(191, 153, 73, 0.18), transparent 26%), radial-gradient(circle at 82% 20%, rgba(114, 96, 58, 0.18), transparent 28%)",
+      "radial-gradient(circle at 18% 16%, rgba(207, 169, 91, 0.16), transparent 28%), radial-gradient(circle at 82% 18%, rgba(109, 134, 166, 0.12), transparent 26%), linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.18))",
     cardFrom: "#6f5a31",
     cardTo: "#2a2318",
-    ink: "#f2e5c9",
-    muted: "#cfbf9f",
-    accent: "#d5b067",
-    items: [
-      {
-        badge: "Site",
-        meta: "Project",
-        title: "slowball.ch",
-        href: "https://slowball.ch",
-        featured: true
-      },
-      {
-        badge: "Tool",
-        meta: "Tracking",
-        title: "SlowballTracker",
-        href: "#software"
-      },
-      {
-        badge: "Notes",
-        meta: "Capital and patience",
-        title: "Slow capital notes",
-        href: "#literature"
-      }
-    ]
+    ink: "#f1e4c7",
+    muted: "#d1c09e",
+    accent: "#d4b16a",
+    items: []
   },
   {
     id: "literature",
     label: "Literature",
     layout: "landscape",
     background:
-      "linear-gradient(180deg, rgba(238, 228, 229, 1) 0%, rgba(223, 209, 210, 1) 100%)",
+      "linear-gradient(180deg, rgba(233, 224, 214, 1) 0%, rgba(221, 208, 194, 1) 100%)",
     overlay:
-      "radial-gradient(circle at 12% 14%, rgba(183, 127, 121, 0.18), transparent 26%), radial-gradient(circle at 84% 24%, rgba(167, 138, 132, 0.14), transparent 24%)",
-    cardFrom: "#cbb6b3",
-    cardTo: "#efe5e4",
-    ink: "#34221e",
-    muted: "#6d5550",
-    accent: "#a07770",
+      "radial-gradient(circle at 10% 14%, rgba(158, 121, 105, 0.15), transparent 24%), radial-gradient(circle at 84% 20%, rgba(109, 134, 166, 0.12), transparent 26%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(40,28,21,0.02))",
+    cardFrom: "#dccdbd",
+    cardTo: "#f4ece4",
+    ink: "#2e211b",
+    muted: "#6b5750",
+    accent: "#9e7969",
     items: [
       {
         badge: "Novel",
-        meta: "Featured work",
+        meta: "Long-form fiction",
         title: "La Bacanora",
-        href: "#contact",
-        featured: true
+        href: "#contact"
       },
       {
         badge: "Fiction",
-        meta: "Short stories",
+        meta: "Stories",
         title: "Short fiction",
         href: "#contact"
       },
       {
         badge: "Essay",
-        meta: "Articles and notes",
-        title: "Essays",
+        meta: "Fundacao Cultural Watari",
+        title: "O jardim de Yvonne Mascarenhas",
+        href: "https://www.fcw.org.br/post/o-jardim-de-yvonne-mascarenhas"
+      },
+      {
+        badge: "Essay",
+        meta: "IFSC USP",
+        title:
+          "Reuniao plenaria da Pontificia Academia das Ciencias do Vaticano",
+        href: "https://www2.ifsc.usp.br/portal-ifsc/reuniao-plenaria-da-pontificia-academia-das-ciencias-do-vaticano/"
+      },
+      {
+        badge: "Notes",
+        meta: "Essays and reflections",
+        title: "Articles and notebooks",
         href: "#contact"
-      },
-      {
-        badge: "Essays",
-        meta: "Publication space",
-        title: "Articles",
-        href: "#contact"
-      }
-    ]
-  },
-  {
-    id: "library",
-    label: "Library",
-    layout: "portrait",
-    background:
-      "linear-gradient(180deg, rgba(24, 20, 17, 1) 0%, rgba(15, 13, 11, 1) 100%)",
-    overlay:
-      "radial-gradient(circle at 14% 10%, rgba(171, 132, 66, 0.18), transparent 24%), radial-gradient(circle at 84% 18%, rgba(88, 74, 51, 0.22), transparent 28%)",
-    cardFrom: "#604833",
-    cardTo: "#221a14",
-    ink: "#f4e7cb",
-    muted: "#d4c3a1",
-    accent: "#e2bf76",
-    items: [
-      {
-        badge: "Book",
-        meta: "Santiago Ramon y Cajal",
-        title: "Advice for a Young Investigator",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "D'Arcy Wentworth Thompson",
-        title: "On Growth and Form",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "Thomas S. Kuhn",
-        title: "The Structure of Scientific Revolutions",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "Douglas Hofstadter",
-        title: "Godel, Escher, Bach",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "David Deutsch",
-        title: "The Beginning of Infinity",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "Charlie Munger",
-        title: "Poor Charlie's Almanack",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "Jorge Luis Borges",
-        title: "Ficciones",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "Roberto Bolano",
-        title: "The Savage Detectives",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "W. G. Sebald",
-        title: "The Rings of Saturn",
-        href: "#library"
-      },
-      {
-        badge: "Book",
-        meta: "Primo Levi",
-        title: "The Periodic Table",
-        href: "#library"
       }
     ]
   },
@@ -373,38 +268,37 @@ export const gallerySections: GallerySection[] = [
     label: "Consulting",
     layout: "landscape",
     background:
-      "linear-gradient(180deg, rgba(236, 232, 224, 1) 0%, rgba(219, 214, 205, 1) 100%)",
+      "linear-gradient(180deg, rgba(217, 223, 219, 1) 0%, rgba(202, 210, 206, 1) 100%)",
     overlay:
-      "radial-gradient(circle at 16% 12%, rgba(160, 152, 133, 0.16), transparent 24%), radial-gradient(circle at 86% 18%, rgba(130, 122, 106, 0.16), transparent 28%)",
-    cardFrom: "#c9c1b4",
-    cardTo: "#ede7dc",
-    ink: "#30261f",
-    muted: "#66594d",
-    accent: "#86745f",
+      "radial-gradient(circle at 16% 14%, rgba(109, 134, 166, 0.15), transparent 24%), radial-gradient(circle at 86% 20%, rgba(118, 136, 123, 0.16), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(31,39,34,0.03))",
+    cardFrom: "#d9e0db",
+    cardTo: "#b8c3be",
+    ink: "#1f2723",
+    muted: "#596762",
+    accent: "#6e8d7a",
     items: [
       {
         badge: "Work",
-        meta: "Technical review",
+        meta: "Scientific and technical review",
         title: "Technical diligence",
-        href: "#contact",
-        featured: true
-      },
-      {
-        badge: "Work",
-        meta: "Scientific assessment",
-        title: "Research review",
         href: "#contact"
       },
       {
         badge: "Work",
-        meta: "Product and systems",
-        title: "Product evaluation",
+        meta: "Imaging and biophysics",
+        title: "Research assessment",
         href: "#contact"
       },
       {
         badge: "Work",
-        meta: "Imaging and data",
-        title: "Workflow analysis",
+        meta: "Technology and product",
+        title: "Systems evaluation",
+        href: "#contact"
+      },
+      {
+        badge: "Work",
+        meta: "Capital and process",
+        title: "Investment analysis",
         href: "#contact"
       }
     ]

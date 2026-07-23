@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Pablo Aurelio Gomez Garcia | Study",
   description:
-    "A vintage, image-led personal study for Pablo Aurelio Gomez Garcia's research, software, writing, apps, Slowball work, and consulting."
+    "A personal study for Pablo Aurelio Gomez Garcia spanning research, software, literature, investing, and technical diligence."
 };
 
 export default function RootLayout({
